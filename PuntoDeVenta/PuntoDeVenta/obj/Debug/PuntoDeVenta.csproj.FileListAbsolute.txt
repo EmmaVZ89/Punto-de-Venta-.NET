@@ -1,0 +1,15 @@
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\PuntoDeVenta.exe.config
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\PuntoDeVenta.exe
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\PuntoDeVenta.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta.csproj.AssemblyReference.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\MainWindow.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\App.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta_MarkupCompile.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta_MarkupCompile.lref
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\MainWindow.baml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta.g.resources
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta.Properties.Resources.resources
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta.csproj.GenerateResource.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta.csproj.CoreCompileInputs.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta.exe
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta.pdb
