@@ -334,13 +334,17 @@
                                             Width="80"
                                             BorderBrush="Transparent"
                                             Foreground="White"
+                                            Click="BtnConsultar_Click"
+                                            CommandParameter="{Binding IdUsuario}"
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
                                     <Button Content="Modificar"
                                             x:Name="BtnModificar"
                                             Background="#40C9A2"
                                             Width="80"
                                             BorderBrush="Transparent"
-                                            Foreground="White"                                       
+                                            Foreground="White"      
+                                            Click="BtnModificar_Click"
+                                            CommandParameter="{Binding IdUsuario}"
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
                                     <Button Content="Eliminar"
                                             x:Name="BtnEliminar"
@@ -348,6 +352,8 @@
                                             Width="80"
                                             BorderBrush="Transparent"
                                             Foreground="White"
+                                            Click="BtnEliminar_Click"
+                                            CommandParameter="{Binding IdUsuario}"
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
                                 </DockPanel>
                             </DataTemplate>

@@ -131,6 +131,42 @@
                     Background="#40C9A2" Style="{DynamicResource BtnStyle}"
                     Click="BtnRegresar_Click"></Button>
             <!-- #ENDREGION -->
+            <!-- #REGION CREAR -->
+            <Button x:Name="BtnCrear"
+                    Content="Crear"
+                    Grid.Row="20"
+                    Grid.Column="5"
+                    Width="100"
+                    Background="#2F9C95"
+                    Style="{DynamicResource BtnStyle}"
+                    Visibility="Hidden"
+                    Click="BtnCrear_Click">
+            </Button>
+            <!-- #ENDREGION -->
+            <!-- #REGION ELIMINAR -->
+            <Button x:Name="BtnEliminar"
+                    Content="Eliminar"
+                    Grid.Row="20"
+                    Grid.Column="5"
+                    Width="100"
+                    Background="#2F9C95"
+                    Style="{DynamicResource BtnStyle}"
+                    Visibility="Hidden"
+                    Click="BtnEliminar_Click">
+            </Button>
+            <!-- #ENDREGION -->
+            <!-- #REGION MODIFICAR -->
+            <Button x:Name="BtnModificar"
+                    Content="Modificar"
+                    Grid.Row="20"
+                    Grid.Column="5"
+                    Width="100"
+                    Background="#2F9C95"
+                    Style="{DynamicResource BtnStyle}"
+                    Visibility="Hidden"
+                    Click="BtnModificar_Click">
+            </Button>
+            <!-- #ENDREGION -->
             <!-- #ENDREGION -->
             <!-- #REGION CONTENIDO -->
             <TextBlock Grid.Row="4"
@@ -199,17 +235,36 @@
                       x:Name="cbPrivilegio"></ComboBox>
             <Image Grid.Row="4"
                    Grid.Column="4"
-                   Grid.RowSpan="11"
+                   Grid.RowSpan="9"
                    Grid.ColumnSpan="2"
                    Name="imagen"
                    Source="../src/img/user.png"></Image>
             <Button Grid.Column="4"
-                    Grid.Row="16"
+                    Grid.Row="14"
                     Grid.ColumnSpan="2"
                     Width="100"
                     Content="Cambiar Imágen"
                     Background="#40C9A2"
+                    Name="BtnCambiarImagen"
+                    Click="BtnCambiarImagen_Click"
                     Style="{DynamicResource BtnStyle}"></Button>
+            <TextBlock Text="Usuario:"
+                       Grid.Column="4"
+                       Grid.Row="16"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"></TextBlock>
+            <TextBox x:Name="tbUsuario"
+                     Grid.Column="5"
+                     Grid.Row="16"></TextBox>
+            <TextBlock Text="Contraseña:"
+                       Grid.Column="4"
+                       Grid.Row="18"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"></TextBlock>
+            <TextBox x:Name="tbContrasenia"
+                     Grid.Column="5"
+                     Grid.Row="18"></TextBox>
+
             <!-- #ENDREGION -->
         </Grid>
     </Border>
