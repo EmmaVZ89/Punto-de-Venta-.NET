@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PuntoDeVenta.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,5 +52,9 @@ namespace PuntoDeVenta
             this.Close();
         }
 
+        private void Usuarios_click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new Usuarios();
+        }
     }
 }

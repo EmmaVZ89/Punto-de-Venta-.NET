@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PuntoDeVenta"
+        xmlns:local="clr-namespace:PuntoDeVenta" xmlns:viewmodels="clr-namespace:PuntoDeVenta.Views"
         mc:Ignorable="d"
         Title="Inicio" 
         Height="600" 
@@ -49,7 +49,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -57,8 +57,8 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#664147"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="#664147"/>
+                                <Setter Property="Background" TargetName="border" Value="#A3F7B5"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#A3F7B5"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="TRANSPARENT"/>
@@ -188,6 +188,13 @@
         </Style>
         <!-- #ENDREGION -->
 
+        <!-- #REGION DATATEMPLATE USUARIOS -->
+        <DataTemplate x:Name="Usuarios"
+                      DataType="{x:Type viewmodels:Usuarios}">
+            <viewmodels:Usuarios DataContext="{Binding}"></viewmodels:Usuarios>
+        </DataTemplate>
+        <!-- #ENDREGION -->
+
     </Window.Resources>
 
     <!-- #REGION VISTA PRINCIPAL -->
@@ -307,7 +314,7 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="50"></TextBlock>
-
+                <ContentControl Content="{Binding}"></ContentControl>
             </Grid>
             <!-- #ENDREGION -->
             <!-- #REGION SIDEBAR -->
@@ -467,7 +474,7 @@
                                     Cursor="Hand"
                                     Background="Transparent"
                                     BorderBrush="Transparent" 
-                                    Style="{DynamicResource BtnListaStyle}">
+                                    Style="{DynamicResource BtnListaStyle}" Click="Usuarios_click">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60"></ColumnDefinition>
