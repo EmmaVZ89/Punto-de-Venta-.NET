@@ -222,57 +222,62 @@
     </UserControl.Resources>
     <!-- #REGION CONTENIDO-->
     <Border CornerRadius="10"
-            Background="#E5F9E0">
+            Background="Transparent">
         <Grid Name="GridUsuarios">
-            <!-- #REGION COLS & ROWS-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="20"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="20"></RowDefinition>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="20"></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="20"></RowDefinition>
-            </Grid.RowDefinitions>
-            <!-- #ENDREGION -->
-            <!-- #REGION TITULO -->
-            <TextBlock Grid.Row="0"
+            <Grid x:Name="Contenido"
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="6"
+                  Grid.RowSpan="8">
+                <!-- #REGION COLS & ROWS-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!-- #ENDREGION -->
+                <!-- #REGION TITULO -->
+                <TextBlock Grid.Row="0"
                        Grid.ColumnSpan="6"
                        Text="Gestión de Usuarios"
                        Foreground="Black"
                        FontSize="30"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"></TextBlock>
-            <!-- #ENDREGION -->
-            <!-- #REGION BUSCADOR -->
-            <!-- #REGION TEXTO -->
-            <TextBlock Text="Buscar Usuario:"
+                <!-- #ENDREGION -->
+                <!-- #REGION BUSCADOR -->
+                <!-- #REGION TEXTO -->
+                <TextBlock Text="Buscar Usuario:"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Grid.Column="1"
                        Grid.Row="2"
                        FontSize="15"
                        Margin="0,0,10,0"></TextBlock>
-            <!-- #ENDREGION -->
-            <!-- #REGION TEXTBOX -->
-            <TextBox TextAlignment="Center"
+                <!-- #ENDREGION -->
+                <!-- #REGION TEXTBOX -->
+                <TextBox TextAlignment="Center"
                      Background="Transparent"
                      BorderBrush="#40C9A2"
                      Grid.Column="2"
                      Grid.Row="2"
                      FontSize="20" Style="{DynamicResource TextBoxStyle}"></TextBox>
-            <!-- #ENDREGION -->
-            <!-- #REGION BTN BUSCAR -->
-            <Button Grid.Column="3"
+                <!-- #ENDREGION -->
+                <!-- #REGION BTN BUSCAR -->
+                <Button Grid.Column="3"
                     Grid.Row="2"
                     Background="#40C9A2"
                     BorderBrush="#40C9A2"
@@ -281,14 +286,14 @@
                     Width="100"
                     x:Name="BtnBuscar"
                     HorizontalAlignment="Left" Style="{DynamicResource BtnBuscarStyle}">
-                <TextBlock Text="Buscar"
+                    <TextBlock Text="Buscar"
                            Foreground="White"
                            FontSize="15"
                            ></TextBlock>
-            </Button>
-            <!-- #ENDREGION -->
-            <!-- #REGION BTN CREAR USUARIO -->
-            <Button Background="#7D8CC4"
+                </Button>
+                <!-- #ENDREGION -->
+                <!-- #REGION BTN CREAR USUARIO -->
+                <Button Background="#7D8CC4"
                     BorderBrush="#7D8CC4"
                     Grid.Column="4"
                     Grid.Row="2"
@@ -297,14 +302,14 @@
                     x:Name="BtnCrearUsuario"
                     Style="{DynamicResource BtnBuscarStyle}"
                     Click="BtnCrearUsuario_Click">
-                <TextBlock Text="Agregar Usuario"
+                    <TextBlock Text="Agregar Usuario"
                            Foreground="white"
                            FontSize="15"></TextBlock>
-            </Button>
-            <!-- #ENDREGION -->
-            <!-- #ENDREGION -->
-            <!-- #REGION DATAGRID-->
-            <DataGrid Grid.Row="4"
+                </Button>
+                <!-- #ENDREGION -->
+                <!-- #ENDREGION -->
+                <!-- #REGION DATAGRID-->
+                <DataGrid Grid.Row="4"
                       Grid.Column="1"
                       Grid.RowSpan="2"
                       Grid.ColumnSpan="4"
@@ -321,65 +326,69 @@
                       HeadersVisibility="Column"
                       GridLinesVisibility="Horizontal"
                       HorizontalGridLinesBrush="#2F9C95" Style="{DynamicResource DataGridStyle}">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Opciones del Administrador"
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Opciones del Administrador"
                                             Width="245">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <DockPanel>
-                                    <!--CREACIÓN DE BOTONES PARA CRUD DE USUARIOS-->
-                                    <Button Content="Consultar"
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DockPanel>
+                                        <!--CREACIÓN DE BOTONES PARA CRUD DE USUARIOS-->
+                                        <Button Content="Consultar"
                                             x:Name="BtnConsultar"
                                             Background="#009FFD"
                                             Width="80"
                                             BorderBrush="Transparent"
                                             Foreground="White"
                                             Click="BtnConsultar_Click"
+                                            Cursor="Hand"
                                             CommandParameter="{Binding IdUsuario}"
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
-                                    <Button Content="Modificar"
+                                        <Button Content="Modificar"
                                             x:Name="BtnModificar"
                                             Background="#40C9A2"
                                             Width="80"
                                             BorderBrush="Transparent"
                                             Foreground="White"      
                                             Click="BtnModificar_Click"
+                                            Cursor="Hand"
                                             CommandParameter="{Binding IdUsuario}"
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
-                                    <Button Content="Eliminar"
+                                        <Button Content="Eliminar"
                                             x:Name="BtnEliminar"
                                             Background="#B8336A"
                                             Width="80"
                                             BorderBrush="Transparent"
                                             Foreground="White"
                                             Click="BtnEliminar_Click"
+                                            Cursor="Hand"
                                             CommandParameter="{Binding IdUsuario}"
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
-                                </DockPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="ID"
+                                    </DockPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="ID"
                                         Width="50"
                                         Binding="{Binding IdUsuario}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Nombre"
+                        <DataGridTextColumn Header="Nombre"
                                         Width="100"
                                         Binding="{Binding Nombre}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Apellido"
+                        <DataGridTextColumn Header="Apellido"
                                         Width="100"
                                         Binding="{Binding Apellido}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Teléfono"
+                        <DataGridTextColumn Header="Teléfono"
                                         Width="100"
                                         Binding="{Binding Telefono}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Email"
+                        <DataGridTextColumn Header="Email"
                                         Width="*"
                                         Binding="{Binding Correo}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Privilegio"
+                        <DataGridTextColumn Header="Privilegio"
                                         Width="*"
                                         Binding="{Binding NombrePrivilegio}"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-            <!-- #ENDREGION -->
+                    </DataGrid.Columns>
+                </DataGrid>
+                <!-- #ENDREGION -->
+            </Grid>
             <!-- #REGION FRAMEUSUARIOS-->
             <Frame x:Name="FrameUsuarios"
                        Grid.Column="0"

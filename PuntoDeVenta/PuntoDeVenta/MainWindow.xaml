@@ -11,6 +11,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
+        MouseDown="Window_MouseDown"
         Background="Transparent">
 
     <Window.Resources>
@@ -198,11 +199,15 @@
     </Window.Resources>
 
     <!-- #REGION VISTA PRINCIPAL -->
-    <Border CornerRadius="10" Background="GhostWhite">
+    <Border CornerRadius="10" Background="Transparent">
         <Grid Name="Principal" Background="Transparent">
             <!-- #REGION HEADER -->
-            <Grid Name="Header" Height="35" VerticalAlignment="Top" Background="Transparent">
-                <Border CornerRadius="10,10,0,0" Background="#2F9C95"></Border>
+            <Grid Name="Header" Height="35"
+                  VerticalAlignment="Top"
+                  Background="Transparent">
+                <Border CornerRadius="10,10,0,0"
+                        Background="#2F9C95"
+                        Opacity="0.9"></Border>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -308,12 +313,13 @@
                   HorizontalAlignment="Right"
                   Height="565"
                   Width="925" PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownBG">
-                <Border CornerRadius="0,0,0,10"
-                        Background="#E5F9E0"></Border>
-                <TextBlock Text="Información herramientas"
+                <Border CornerRadius="0,0,10,0"
+                        Background="#E5F9E0"
+                        Opacity="0.9"></Border>
+                <!--<TextBlock Text="Información herramientas"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="50"></TextBlock>
+                           FontSize="50"></TextBlock>-->
                 <ContentControl Content="{Binding}"></ContentControl>
             </Grid>
             <!-- #ENDREGION -->
@@ -324,7 +330,8 @@
                   HorizontalAlignment="Left"
                   Margin="0,35,0,0">
                 <Border Background="#40C9A2"
-                        CornerRadius="0,0,0,10"></Border>
+                        CornerRadius="0,0,0,10"
+                        Opacity="0.9"></Border>
                 <!-- #REGION MENU -->
                 <StackPanel Background="Transparent"
                             VerticalAlignment="Top">

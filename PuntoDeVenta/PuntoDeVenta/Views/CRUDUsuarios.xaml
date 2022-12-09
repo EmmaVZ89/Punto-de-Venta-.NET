@@ -9,6 +9,7 @@
       d:DesignHeight="565" 
       d:DesignWidth="925"
       FontSize="18"
+      Background="Transparent"
       Title="CRUDUsuarios">
 
     <Page.Resources>
@@ -396,7 +397,7 @@
 
     </Page.Resources>
 
-    <Border Background="#E5F9E0"
+    <Border Background="Transparent"
             CornerRadius="10">
         <Grid>
             <!-- #REGION COLS & ROWS -->

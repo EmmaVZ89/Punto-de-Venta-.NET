@@ -61,6 +61,7 @@ namespace PuntoDeVenta.Views
             CRUDUsuarios ventana = new CRUDUsuarios();
             // Anteriormente cree el FrameUsuarios que ocupa toda la vista de la Vista Usuario
             this.FrameUsuarios.Content = ventana; // aca hago que el contenido del FrameUsuario sea la ventana CRUDUsuarios
+            this.Contenido.Visibility = Visibility.Hidden;
             ventana.BtnCrear.Visibility = Visibility.Visible;
         }
 
@@ -71,6 +72,7 @@ namespace PuntoDeVenta.Views
             ventana.IdUsuario = id;
             ventana.Consultar();
             this.FrameUsuarios.Content = ventana;
+            this.Contenido.Visibility = Visibility.Hidden;
             ventana.Titulo.Text = "Consulta de Usuario";
             ventana.tbNombre.IsEnabled = false;
             ventana.tbApellido.IsEnabled = false;
@@ -92,6 +94,7 @@ namespace PuntoDeVenta.Views
             ventana.IdUsuario = id;
             ventana.Consultar();
             this.FrameUsuarios.Content = ventana;
+            this.Contenido.Visibility = Visibility.Hidden;
             ventana.Titulo.Text = "Modificar Usuario";
             ventana.tbNombre.IsEnabled = true;
             ventana.tbApellido.IsEnabled = true;
@@ -114,6 +117,7 @@ namespace PuntoDeVenta.Views
             ventana.IdUsuario = id;
             ventana.Consultar();
             this.FrameUsuarios.Content = ventana;
+            this.Contenido.Visibility = Visibility.Hidden;
             ventana.Titulo.Text = "Eliminar Usuario";
             ventana.tbNombre.IsEnabled = false;
             ventana.tbApellido.IsEnabled = false;
