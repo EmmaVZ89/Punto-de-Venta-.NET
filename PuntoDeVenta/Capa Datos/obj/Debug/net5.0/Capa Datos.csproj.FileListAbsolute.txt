@@ -1,0 +1,5 @@
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos.csproj.AssemblyReference.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos.AssemblyInfoInputs.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos.AssemblyInfo.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos.csproj.CoreCompileInputs.cache
