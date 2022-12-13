@@ -1,0 +1,15 @@
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\bin\Debug\net5.0\Capa Datos1.deps.json
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\bin\Debug\net5.0\Capa Datos1.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\bin\Debug\net5.0\ref\Capa Datos1.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\bin\Debug\net5.0\Capa Datos1.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\bin\Debug\net5.0\Capa Entidad.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\bin\Debug\net5.0\Capa Entidad.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.csproj.AssemblyReference.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.AssemblyInfoInputs.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.AssemblyInfo.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.csproj.CoreCompileInputs.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.csproj.CopyComplete
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\ref\Capa Datos1.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Datos\obj\Debug\net5.0\Capa Datos1.pdb

@@ -10,3 +10,8 @@ C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\ob
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\obj\Debug\net5.0\Capa Negocio.dll
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\obj\Debug\net5.0\ref\Capa Negocio.dll
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\obj\Debug\net5.0\Capa Negocio.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\bin\Debug\net5.0\Capa Entidad.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\bin\Debug\net5.0\Capa Entidad.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\obj\Debug\net5.0\Capa Negocio.csproj.CopyComplete
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\bin\Debug\net5.0\Capa Datos1.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Negocio\bin\Debug\net5.0\Capa Datos1.pdb

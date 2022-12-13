@@ -139,5 +139,18 @@
   <ItemGroup>
     <Resource Include="src\img\user.png" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capa Entidad\Capa Entidad.csproj">
+      <Project>{82ceffc5-7d92-4b99-97aa-56b4fc83a735}</Project>
+      <Name>Capa Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa Negocio\Capa Negocio.csproj">
+      <Project>{55c221e4-b34e-423c-942a-e6ee612acb63}</Project>
+      <Name>Capa Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

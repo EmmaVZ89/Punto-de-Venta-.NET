@@ -1,0 +1,9 @@
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\bin\Debug\net4.7.2\Capa Entidad.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\bin\Debug\net4.7.2\Capa Entidad.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.csproj.AssemblyReference.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.AssemblyInfoInputs.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.AssemblyInfo.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.csproj.CoreCompileInputs.cache
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.pdb
