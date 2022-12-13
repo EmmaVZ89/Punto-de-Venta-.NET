@@ -15,47 +15,52 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Capa_Negocio;
 
 namespace PuntoDeVenta.Views
 {
-    /// <summary>
-    /// Lógica de interacción para Usuarios.xaml
-    /// </summary>
     public partial class Usuarios : UserControl
     {
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString);
+        readonly CN_Usuarios objeto_CN_Usuarios = new CN_Usuarios();
+        //SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString);
+
+        #region INICIAL
         public Usuarios()
         {
             InitializeComponent();
             this.CargarDatos();
         }
+        #endregion
 
+        #region CARGAR USUARIOS
         public void CargarDatos()
         {
-            try
-            {
-                this.conn.Open();
-                string query = "SELECT IdUsuario, Nombre, Apellido, Telefono, Correo, NombrePrivilegio FROM Usuarios " +
-                    "INNER JOIN Privilegios " +
-                    "ON Usuarios.Privilegio=Privilegios.IdPrivilegio " +
-                    "ORDER BY IdUsuario ASC";
-                SqlCommand cmd = new SqlCommand(query, this.conn);
-                SqlDataAdapter adapterSql = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adapterSql.Fill(dt);
-                this.GridDatos.ItemsSource = dt.DefaultView;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No fue posible conectarse con los datos");
-            }
-            finally
-            {
-                this.conn.Close();
-            }
-           
+            this.GridDatos.ItemsSource = this.objeto_CN_Usuarios.CargarUsuarios().DefaultView;
+            //try
+            //{
+            //    this.conn.Open();
+            //    string query = "SELECT IdUsuario, Nombre, Apellido, Telefono, Correo, NombrePrivilegio FROM Usuarios " +
+            //        "INNER JOIN Privilegios " +
+            //        "ON Usuarios.Privilegio=Privilegios.IdPrivilegio " +
+            //        "ORDER BY IdUsuario ASC";
+            //    SqlCommand cmd = new SqlCommand(query, this.conn);
+            //    SqlDataAdapter adapterSql = new SqlDataAdapter(cmd);
+            //    DataTable dt = new DataTable();
+            //    adapterSql.Fill(dt);
+            //    this.GridDatos.ItemsSource = dt.DefaultView;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("No fue posible conectarse con los datos");
+            //}
+            //finally
+            //{
+            //    this.conn.Close();
+            //}
         }
+        #endregion
 
+        #region AGREGAR
         private void BtnCrearUsuario_Click(object sender, RoutedEventArgs e)
         {
             CRUDUsuarios ventana = new CRUDUsuarios();
@@ -64,7 +69,9 @@ namespace PuntoDeVenta.Views
             this.Contenido.Visibility = Visibility.Hidden;
             ventana.BtnCrear.Visibility = Visibility.Visible;
         }
+        #endregion
 
+        #region CONSULTAR
         private void BtnConsultar_Click(object sender, RoutedEventArgs e)
         {
             int id = (int)((Button)sender).CommandParameter;
@@ -86,7 +93,9 @@ namespace PuntoDeVenta.Views
             ventana.tbContrasenia.IsEnabled = false;
             ventana.BtnCambiarImagen.IsEnabled = false;
         }
+        #endregion
 
+        #region ACTUALIZAR
         private void BtnModificar_Click(object sender, RoutedEventArgs e)
         {
             int id = (int)((Button)sender).CommandParameter;
@@ -109,7 +118,9 @@ namespace PuntoDeVenta.Views
             ventana.BtnCambiarImagen.IsEnabled = true;
             ventana.BtnModificar.Visibility = Visibility.Visible;
         }
+        #endregion
 
+        #region ELIMINAR
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
             int id = (int)((Button)sender).CommandParameter;
@@ -132,5 +143,6 @@ namespace PuntoDeVenta.Views
             ventana.BtnCambiarImagen.IsEnabled = false;
             ventana.BtnEliminar.Visibility = Visibility.Visible;
         }
+        #endregion
     }
 }

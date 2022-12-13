@@ -13,6 +13,8 @@ namespace Capa_Negocio
     {
         private readonly CD_Usuarios objDatos = new CD_Usuarios();
 
+        // CRUD USUARIOS
+
         #region CONSULTAR
         public CE_Usuarios Consultar(int IdUsuario)
         {
@@ -52,6 +54,15 @@ namespace Capa_Negocio
         public void ActualizarIMG(CE_Usuarios usuario)
         {
             this.objDatos.CD_ActualizarIMG(usuario);
+        }
+        #endregion
+
+        // VISTA USUARIOS
+
+        #region CARGAR USUARIOS
+        public DataTable CargarUsuarios()
+        {
+            return this.objDatos.CargarUsuarios();
         }
         #endregion
 

@@ -69,6 +69,7 @@ namespace Capa_Datos
             this.capaEntidadUsuarios.Nombre = Convert.ToString(row[1]);
             this.capaEntidadUsuarios.Apellido = Convert.ToString(row[2]);
             this.capaEntidadUsuarios.Dni = Convert.ToInt32(row[3]);
+            this.capaEntidadUsuarios.Cuit = Convert.ToInt32(row[4]);
             this.capaEntidadUsuarios.Correo = Convert.ToString(row[5]);
             this.capaEntidadUsuarios.Telefono = Convert.ToInt32(row[6]);
             this.capaEntidadUsuarios.Fecha_Nac = Convert.ToDateTime(row[7]);
@@ -197,5 +198,34 @@ namespace Capa_Datos
         }
         #endregion
 
+
+        // VISTA DE USUARIOS
+
+        #region CARGAR USUARIOS
+        public DataTable CargarUsuarios()
+        {
+            DataTable dTable = new DataTable();
+
+            try
+            {
+                SqlDataAdapter adapterSql = new SqlDataAdapter("SP_U_CargarUsuarios", this.conn.AbrirConexion());
+                adapterSql.SelectCommand.CommandType = CommandType.StoredProcedure;
+                DataSet dSet = new DataSet();
+                dSet.Clear();
+                adapterSql.Fill(dSet);
+                dTable = dSet.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                this.conn.CerrarConexion();
+            }
+           
+            return dTable;
+        }
+        #endregion
     }
 }

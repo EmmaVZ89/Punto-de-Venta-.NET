@@ -22,15 +22,13 @@ using Capa_Negocio;
 
 namespace PuntoDeVenta.Views
 {
-    /// <summary>
-    /// Lógica de interacción para CRUDUsuarios.xaml
-    /// </summary>
     public partial class CRUDUsuarios : Page
     {
         readonly CN_Usuarios objeto_CN_Usuarios = new CN_Usuarios();
         readonly CE_Usuarios objeto_CE_Usuarios = new CE_Usuarios();
+        readonly CN_Privilegios objeto_CN_Privilegios = new CN_Privilegios();
 
-        readonly SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString);
+        //readonly SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString);
         private byte[] data;
         private bool imagenSubida = false;
         public string Patron = "PuntoDeVenta";
@@ -54,25 +52,30 @@ namespace PuntoDeVenta.Views
         #region CARGAR PRIVILEGIOS
         void CargarCB()
         {
-            try
+            List<string> privilegios = this.objeto_CN_Privilegios.ListarPrivilegios();
+            for (int i = 0; i < privilegios.Count; i++)
             {
-                this.conn.Open();
-                string query = "SELECT NombrePrivilegio FROM Privilegios";
-                SqlCommand cmd = new SqlCommand(query, this.conn);
-                SqlDataReader readerSql = cmd.ExecuteReader();
-                while (readerSql.Read())
-                {
-                    this.cbPrivilegio.Items.Add(readerSql["NombrePrivilegio"].ToString());
-                }
+                this.cbPrivilegio.Items.Add(privilegios[i]);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No fue posible conectar con los datos");
-            }
-            finally
-            {
-                this.conn.Close();
-            }
+            //try
+            //{
+            //    this.conn.Open();
+            //    string query = "SELECT NombrePrivilegio FROM Privilegios";
+            //    SqlCommand cmd = new SqlCommand(query, this.conn);
+            //    SqlDataReader readerSql = cmd.ExecuteReader();
+            //    while (readerSql.Read())
+            //    {
+            //        this.cbPrivilegio.Items.Add(readerSql["NombrePrivilegio"].ToString());
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("No fue posible conectar con los datos");
+            //}
+            //finally
+            //{
+            //    this.conn.Close();
+            //}
         }
         #endregion
 
@@ -99,8 +102,7 @@ namespace PuntoDeVenta.Views
         {
             if(this.ValidarCampos() == true && this.tbContrasenia.Text != "")
             {
-                // PENDIENTE
-                int privilegio = 0;
+                int privilegio = this.objeto_CN_Privilegios.IdPrivilegio(this.cbPrivilegio.Text);
 
                 this.objeto_CE_Usuarios.Nombre = this.tbNombre.Text;
                 this.objeto_CE_Usuarios.Apellido = this.tbApellido.Text;
@@ -188,8 +190,11 @@ namespace PuntoDeVenta.Views
             this.tbCorreo.Text = auxCN.Correo.ToString();
             this.tbTelefono.Text = auxCN.Telefono.ToString();
             this.tbFecha.Text = auxCN.Fecha_Nac.ToString();
-            // pendiente
-            this.cbPrivilegio.Text = "";
+
+            var privilegio = this.objeto_CN_Privilegios.NombrePrivilegio(auxCN.Privilegio);
+            MessageBox.Show(privilegio.NombrePrivilegio);
+            MessageBox.Show(privilegio.IdPrivilegio);
+            this.cbPrivilegio.Text = privilegio.NombrePrivilegio;
 
             ImageSourceConverter imgs = new ImageSourceConverter();
             this.imagen.Source = (ImageSource)imgs.ConvertFrom(auxCN.Img);
@@ -253,8 +258,9 @@ namespace PuntoDeVenta.Views
         {
             if (this.ValidarCampos() == true)
             {
-                // PENDIENTE
-                int privilegio = 0;
+                MessageBox.Show(this.cbPrivilegio.Text);
+                //this.cbPrivilegio.Text
+                int privilegio = this.objeto_CN_Privilegios.IdPrivilegio(this.cbPrivilegio.Text);
 
                 this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
                 this.objeto_CE_Usuarios.Nombre = this.tbNombre.Text;
