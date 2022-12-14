@@ -59,10 +59,17 @@ namespace Capa_Negocio
 
         // VISTA USUARIOS
 
-        #region CARGAR USUARIOS
-        public DataTable CargarUsuarios()
+        //#region CARGAR USUARIOS
+        //public DataTable CargarUsuarios()
+        //{
+        //    return this.objDatos.CargarUsuarios();
+        //}
+        //#endregion
+
+        #region BUSCAR USUARIOS
+        public DataTable Buscar(string buscar)
         {
-            return this.objDatos.CargarUsuarios();
+            return this.objDatos.Buscar(buscar);
         }
         #endregion
 

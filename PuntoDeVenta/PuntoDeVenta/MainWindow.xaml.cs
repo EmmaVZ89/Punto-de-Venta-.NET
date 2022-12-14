@@ -29,7 +29,7 @@ namespace PuntoDeVenta
 
         private void TBShow(object sender, RoutedEventArgs e)
         {
-            this.GridContent.Opacity = 0.5;
+            this.GridContent.Opacity = 0.8;
         }
 
         private void TBHide(object sender, RoutedEventArgs e)
@@ -49,7 +49,8 @@ namespace PuntoDeVenta
 
         private void Cerrar(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            Application.Current.Shutdown();
         }
 
         private void Usuarios_click(object sender, RoutedEventArgs e)

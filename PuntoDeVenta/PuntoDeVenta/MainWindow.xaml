@@ -312,15 +312,19 @@
                   VerticalAlignment="Bottom"
                   HorizontalAlignment="Right"
                   Height="565"
-                  Width="925" PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownBG">
-                <Border CornerRadius="0,0,10,0"
+                  Width="1000" PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownBG">
+                <Border CornerRadius="0,0,10,10"
                         Background="#E5F9E0"
                         Opacity="0.9"></Border>
                 <!--<TextBlock Text="Información herramientas"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="50"></TextBlock>-->
-                <ContentControl Content="{Binding}"></ContentControl>
+                <ContentControl Content="{Binding}"
+                                Height="565"
+                                Width="925"
+                                HorizontalAlignment="Right"
+                                x:Name="ContentControl"></ContentControl>
             </Grid>
             <!-- #ENDREGION -->
             <!-- #REGION SIDEBAR -->

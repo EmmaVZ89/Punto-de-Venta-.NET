@@ -192,8 +192,7 @@ namespace PuntoDeVenta.Views
             this.tbFecha.Text = auxCN.Fecha_Nac.ToString();
 
             var privilegio = this.objeto_CN_Privilegios.NombrePrivilegio(auxCN.Privilegio);
-            MessageBox.Show(privilegio.NombrePrivilegio);
-            MessageBox.Show(privilegio.IdPrivilegio);
+
             this.cbPrivilegio.Text = privilegio.NombrePrivilegio;
 
             ImageSourceConverter imgs = new ImageSourceConverter();
@@ -258,8 +257,6 @@ namespace PuntoDeVenta.Views
         {
             if (this.ValidarCampos() == true)
             {
-                MessageBox.Show(this.cbPrivilegio.Text);
-                //this.cbPrivilegio.Text
                 int privilegio = this.objeto_CN_Privilegios.IdPrivilegio(this.cbPrivilegio.Text);
 
                 this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;

@@ -118,10 +118,10 @@ END
 
 -- PROCEDIMIENTO OBTENER NOMBRE PRIVILEGIO
 CREATE PROCEDURE SP_P_NombrePrivilegio
-@NombrePrivilegio VARCHAR(50)
+@IdPrivilegio VARCHAR(50)
 AS BEGIN
-SELECT IdPrivilegio FROM Privilegios
-WHERE NombrePrivilegio=@NombrePrivilegio
+SELECT NombrePrivilegio FROM Privilegios
+WHERE IdPrivilegio=@IdPrivilegio
 END
 
 -- PROCEDIMIENTO OBTENER ID PRIVILEGIO
@@ -136,4 +136,12 @@ END
 CREATE PROCEDURE SP_P_CargarPrivilegio
 AS BEGIN
 SELECT NombrePrivilegio FROM Privilegios
+END
+
+-- PROCEDIMIENTO BUSCAR USUARIOS
+CREATE PROCEDURE SP_U_Buscar
+@buscar VARCHAR(50)
+AS BEGIN
+SELECT * FROM Usuarios
+WHERE Nombre LIKE @buscar+'%' OR Apellido LIKE @buscar+'%'
 END

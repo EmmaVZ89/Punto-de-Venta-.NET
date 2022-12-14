@@ -274,9 +274,11 @@
                      BorderBrush="#40C9A2"
                      Grid.Column="2"
                      Grid.Row="2"
+                     Name="tbBuscar"
+                     TextChanged="Buscando"
                      FontSize="20" Style="{DynamicResource TextBoxStyle}"></TextBox>
                 <!-- #ENDREGION -->
-                <!-- #REGION BTN BUSCAR -->
+                <!-- #REGION BTN BUSCAR --><!--
                 <Button Grid.Column="3"
                     Grid.Row="2"
                     Background="#40C9A2"
@@ -291,7 +293,7 @@
                            FontSize="15"
                            ></TextBlock>
                 </Button>
-                <!-- #ENDREGION -->
+                --><!-- #ENDREGION -->
                 <!-- #REGION BTN CREAR USUARIO -->
                 <Button Background="#7D8CC4"
                     BorderBrush="#7D8CC4"

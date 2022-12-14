@@ -202,14 +202,42 @@ namespace Capa_Datos
         // VISTA DE USUARIOS
 
         #region CARGAR USUARIOS
-        public DataTable CargarUsuarios()
+        //public DataTable CargarUsuarios()
+        //{
+        //    DataTable dTable = new DataTable();
+
+        //    try
+        //    {
+        //        SqlDataAdapter adapterSql = new SqlDataAdapter("SP_U_CargarUsuarios", this.conn.AbrirConexion());
+        //        adapterSql.SelectCommand.CommandType = CommandType.StoredProcedure;
+        //        DataSet dSet = new DataSet();
+        //        dSet.Clear();
+        //        adapterSql.Fill(dSet);
+        //        dTable = dSet.Tables[0];
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        this.conn.CerrarConexion();
+        //    }
+           
+        //    return dTable;
+        //}
+        #endregion
+
+        #region Buscar USUARIOS
+        public DataTable Buscar(string buscar)
         {
             DataTable dTable = new DataTable();
 
             try
             {
-                SqlDataAdapter adapterSql = new SqlDataAdapter("SP_U_CargarUsuarios", this.conn.AbrirConexion());
+                SqlDataAdapter adapterSql = new SqlDataAdapter("SP_U_Buscar", this.conn.AbrirConexion());
                 adapterSql.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapterSql.SelectCommand.Parameters.Add("@buscar", SqlDbType.VarChar).Value = buscar;
                 DataSet dSet = new DataSet();
                 dSet.Clear();
                 adapterSql.Fill(dSet);
@@ -223,7 +251,7 @@ namespace Capa_Datos
             {
                 this.conn.CerrarConexion();
             }
-           
+
             return dTable;
         }
         #endregion

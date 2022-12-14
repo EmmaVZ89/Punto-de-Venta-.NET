@@ -28,37 +28,38 @@ namespace PuntoDeVenta.Views
         public Usuarios()
         {
             InitializeComponent();
-            this.CargarDatos();
+            //this.CargarDatos();
+            this.Buscar("");
         }
         #endregion
 
-        #region CARGAR USUARIOS
-        public void CargarDatos()
-        {
-            this.GridDatos.ItemsSource = this.objeto_CN_Usuarios.CargarUsuarios().DefaultView;
-            //try
-            //{
-            //    this.conn.Open();
-            //    string query = "SELECT IdUsuario, Nombre, Apellido, Telefono, Correo, NombrePrivilegio FROM Usuarios " +
-            //        "INNER JOIN Privilegios " +
-            //        "ON Usuarios.Privilegio=Privilegios.IdPrivilegio " +
-            //        "ORDER BY IdUsuario ASC";
-            //    SqlCommand cmd = new SqlCommand(query, this.conn);
-            //    SqlDataAdapter adapterSql = new SqlDataAdapter(cmd);
-            //    DataTable dt = new DataTable();
-            //    adapterSql.Fill(dt);
-            //    this.GridDatos.ItemsSource = dt.DefaultView;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("No fue posible conectarse con los datos");
-            //}
-            //finally
-            //{
-            //    this.conn.Close();
-            //}
-        }
-        #endregion
+        //#region CARGAR USUARIOS
+        //public void CargarDatos()
+        //{
+        //    this.GridDatos.ItemsSource = this.objeto_CN_Usuarios.CargarUsuarios().DefaultView;
+        //    //try
+        //    //{
+        //    //    this.conn.Open();
+        //    //    string query = "SELECT IdUsuario, Nombre, Apellido, Telefono, Correo, NombrePrivilegio FROM Usuarios " +
+        //    //        "INNER JOIN Privilegios " +
+        //    //        "ON Usuarios.Privilegio=Privilegios.IdPrivilegio " +
+        //    //        "ORDER BY IdUsuario ASC";
+        //    //    SqlCommand cmd = new SqlCommand(query, this.conn);
+        //    //    SqlDataAdapter adapterSql = new SqlDataAdapter(cmd);
+        //    //    DataTable dt = new DataTable();
+        //    //    adapterSql.Fill(dt);
+        //    //    this.GridDatos.ItemsSource = dt.DefaultView;
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    MessageBox.Show("No fue posible conectarse con los datos");
+        //    //}
+        //    //finally
+        //    //{
+        //    //    this.conn.Close();
+        //    //}
+        //}
+        //#endregion
 
         #region AGREGAR
         private void BtnCrearUsuario_Click(object sender, RoutedEventArgs e)
@@ -142,6 +143,18 @@ namespace PuntoDeVenta.Views
             ventana.tbContrasenia.IsEnabled = false;
             ventana.BtnCambiarImagen.IsEnabled = false;
             ventana.BtnEliminar.Visibility = Visibility.Visible;
+        }
+        #endregion
+
+        #region BUSCADOR USUARIOS
+        private void Buscar(string buscar)
+        {
+            this.GridDatos.ItemsSource = this.objeto_CN_Usuarios.Buscar(buscar).DefaultView;
+        }
+
+        private void Buscando(object sender, TextChangedEventArgs e)
+        {
+            this.Buscar(this.tbBuscar.Text);
         }
         #endregion
     }
