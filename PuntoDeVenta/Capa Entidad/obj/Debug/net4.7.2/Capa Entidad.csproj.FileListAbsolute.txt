@@ -6,3 +6,4 @@ C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\ob
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.csproj.CoreCompileInputs.cache
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.dll
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\Capa Entidad\obj\Debug\net4.7.2\Capa Entidad.csproj.AssemblyReference.cache

@@ -562,7 +562,7 @@
                        VerticalAlignment="Center"/>
             <TextBox Grid.Row="18"
                      Grid.Column="2"
-                     Grid.ColumnSpan="4"
+                     Grid.ColumnSpan="3"
                      Grid.RowSpan="3"
                      x:Name="tbDescripcion"
                      HorizontalContentAlignment="Center"

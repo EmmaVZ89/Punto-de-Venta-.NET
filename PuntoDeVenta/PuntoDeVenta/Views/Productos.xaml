@@ -354,13 +354,13 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Código"
-                                        Width="50"
+                                        Width="100"
                                         Binding="{Binding Codigo}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Nombre"
                                         Width="150"
                                         Binding="{Binding Nombre}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Cantidad"
-                                        Width="100"
+                                        Width="80"
                                         Binding="{Binding Cantidad}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Precio Unitario"
                                         Width="100"
