@@ -65,5 +65,10 @@ namespace PuntoDeVenta
                 this.DragMove();
             }
         }
+
+        private void Productos_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new Productos();
+        }
     }
 }

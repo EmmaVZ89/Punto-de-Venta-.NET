@@ -452,6 +452,7 @@
                             <Button x:Name="BtnProductos"
                                     Height="70"
                                     Width="200"
+                                    Click="Productos_Click"
                                     HorizontalAlignment="Left"
                                     Cursor="Hand"
                                     Background="Transparent"
