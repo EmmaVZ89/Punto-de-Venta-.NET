@@ -30,3 +30,11 @@ C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\ob
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\Productos.baml
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\CRUDProductos.g.cs
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\CRUDProductos.baml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\AcercaDe.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\Dashboard.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\POS.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\AcercaDe.baml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\Dashboard.baml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\POS.baml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\MiCuenta.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\MiCuenta.baml

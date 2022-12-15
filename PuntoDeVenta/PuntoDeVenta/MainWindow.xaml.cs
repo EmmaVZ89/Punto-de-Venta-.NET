@@ -58,17 +58,125 @@ namespace PuntoDeVenta
             this.DataContext = new Usuarios();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if(e.LeftButton == MouseButtonState.Pressed)
-            {
-                this.DragMove();
-            }
-        }
+        //private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    if(e.LeftButton == MouseButtonState.Pressed)
+        //    {
+        //        this.DragMove();
+        //    }
+        //}
 
         private void Productos_Click(object sender, RoutedEventArgs e)
         {
             this.DataContext = new Productos();
         }
+
+        private void Dashboard(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new Dashboard();
+        }
+
+        private void POS(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new POS();
+        }
+
+        private void MiCuenta(object sender, RoutedEventArgs e)
+        {
+            MiCuenta miCuenta = new MiCuenta();
+            miCuenta.ShowDialog();
+        }
+
+        private void AcercaDe(object sender, RoutedEventArgs e)
+        {
+            AcercaDe acercaDe = new AcercaDe();
+            acercaDe.ShowDialog();
+        }
+
+        #region MOVER VENTANA
+
+        private void Mover(Border header)
+        {
+            var restaurar = false;
+
+            header.MouseLeftButtonDown += (s, e) =>
+            {
+                if (e.ClickCount == 2)
+                {
+                    if ((ResizeMode == ResizeMode.CanResize) || (ResizeMode == ResizeMode.CanResizeWithGrip))
+                    {
+                        this.CambiarEstado();
+                    }
+                }
+                else
+                {
+                    if (WindowState == WindowState.Maximized)
+                    {
+                        restaurar = true;
+                    }
+                    this.DragMove();
+                }
+            };
+
+            header.MouseLeftButtonUp += (s, e) =>
+            {
+                restaurar = false;
+            };
+
+            header.MouseMove += (s, e) =>
+            {
+                if (restaurar)
+                {
+                    try
+                    {
+                        restaurar = false;
+                        var mouseX = e.GetPosition(this).X;
+                        var width = RestoreBounds.Width;
+                        var x = mouseX - width / 2;
+
+                        if (x < 0)
+                        {
+                            x = 0;
+                        }
+                        else if (x + width > SystemParameters.PrimaryScreenWidth)
+                        {
+                            x = SystemParameters.PrimaryScreenWidth - width;
+                        }
+
+                        this.WindowState = WindowState.Normal;
+                        this.Left = x;
+                        this.Top = 0;
+                        this.DragMove();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            };
+        }
+
+        private void CambiarEstado()
+        {
+            switch (this.WindowState)
+            {
+                case WindowState.Normal:
+                    {
+                        this.WindowState = WindowState.Maximized;
+                        break;
+                    }
+                case WindowState.Maximized:
+                    {
+                        this.WindowState = WindowState.Normal;
+                        break;
+                    }
+            }
+        }
+
+        private void RestaurarVentana(object sender, RoutedEventArgs e)
+        {
+            this.Mover(sender as Border);
+        }
+        #endregion
     }
 }

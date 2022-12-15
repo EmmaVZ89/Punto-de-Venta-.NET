@@ -61,11 +61,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\AcercaDe.xaml.cs">
+      <DependentUpon>AcercaDe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CRUDProductos.xaml.cs">
       <DependentUpon>CRUDProductos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CRUDUsuarios.xaml.cs">
       <DependentUpon>CRUDUsuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MiCuenta.xaml.cs">
+      <DependentUpon>MiCuenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\POS.xaml.cs">
+      <DependentUpon>POS.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Productos.xaml.cs">
       <DependentUpon>Productos.xaml</DependentUpon>
@@ -85,11 +97,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AcercaDe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CRUDProductos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CRUDUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MiCuenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\POS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +196,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="src\img\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="src\img\github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="src\img\linkedin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="src\img\fondo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

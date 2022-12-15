@@ -11,7 +11,6 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
-        MouseDown="Window_MouseDown"
         Background="Transparent">
 
     <Window.Resources>
@@ -202,10 +201,12 @@
     <Border CornerRadius="10" Background="Transparent">
         <Grid Name="Principal" Background="Transparent">
             <!-- #REGION HEADER -->
-            <Grid Name="Header" Height="35"
+            <Grid Name="Header" 
+                  Height="35"
                   VerticalAlignment="Top"
                   Background="Transparent">
                 <Border CornerRadius="10,10,0,0"
+                        Loaded="RestaurarVentana"
                         Background="#2F9C95"
                         Opacity="0.9"></Border>
                 <Grid>
@@ -220,6 +221,7 @@
                     <!--#ENDREGION-->
                     <!--#REGION MI CUENTA-->
                     <Button x:Name="BtnCuenta"
+                            Click="MiCuenta"
                             Grid.Column="1"
                             Background="Transparent"
                             BorderBrush="Transparent"
@@ -249,6 +251,7 @@
                     <!--#ENDREGION-->
                     <!-- #REGION INFO -->
                     <Button x:Name="BtnInfo"
+                            Click="AcercaDe"
                             Grid.Column="1"
                             Background="Transparent"
                             BorderBrush="Transparent"
@@ -309,21 +312,15 @@
             <!-- #REGION CONTENT -->
             <Grid x:Name="GridContent"
                   Background="Transparent"
-                  VerticalAlignment="Bottom"
-                  HorizontalAlignment="Right"
-                  Height="565"
-                  Width="1000" PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownBG">
+                  Margin="0,35,0,0"
+                  PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDownBG">
                 <Border CornerRadius="0,0,10,10"
                         Background="#E5F9E0"
                         Opacity="0.9"></Border>
-                <!--<TextBlock Text="Información herramientas"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="50"></TextBlock>-->
                 <ContentControl Content="{Binding}"
-                                Height="565"
-                                Width="925"
-                                HorizontalAlignment="Right"
+                                Margin="70,0,0,0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
                                 x:Name="ContentControl"></ContentControl>
             </Grid>
             <!-- #ENDREGION -->
@@ -392,6 +389,7 @@
                         <!-- #REGION INICIO -->
                         <ListViewItem Height="70" Style="{DynamicResource ListViewStyle}">
                             <Button x:Name="BtnInicio"
+                                    Click="Dashboard"
                                     Height="70"
                                     Width="200"
                                     HorizontalAlignment="Left"
@@ -421,6 +419,7 @@
                         <!-- #REGION POS -->
                         <ListViewItem Height="70" Style="{DynamicResource ListViewStyle}">
                             <Button x:Name="BtnPOS"
+                                    Click="POS"
                                     Height="70"
                                     Width="200"
                                     HorizontalAlignment="Left"
