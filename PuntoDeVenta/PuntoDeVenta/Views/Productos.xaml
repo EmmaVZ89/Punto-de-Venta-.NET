@@ -67,6 +67,8 @@
                 <!-- #ENDREGION -->
                 <!-- #REGION BTN CREAR PRODUCTO -->
                 <Button
+                    Background="#7D8CC4"
+                    BorderBrush="#7D8CC4"
                     Grid.Column="4"
                     Grid.Row="2"
                     Cursor="Hand"
@@ -103,6 +105,9 @@
                                     <DockPanel>
                                         <!--CREACIÓN DE BOTONES PARA CRUD DE PRODUCTOS-->
                                         <Button Content="Consultar"
+                                            Background="#009FFD"
+                                            BorderBrush="Transparent"
+                                            Foreground="White"
                                             x:Name="BtnConsultar"
                                             Width="80"
                                             Click="BtnConsultar_Click"
@@ -111,6 +116,9 @@
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
                                         <Button Content="Modificar"
                                             x:Name="BtnModificar"
+                                            Background="#40C9A2"
+                                            BorderBrush="Transparent"
+                                            Foreground="White"   
                                             Width="80"
                                             Click="BtnModificar_Click"
                                             Cursor="Hand"
@@ -118,6 +126,9 @@
                                             Style="{DynamicResource BtnBuscarStyle}"></Button>
                                         <Button Content="Eliminar"
                                             x:Name="BtnEliminar"
+                                            Background="#B8336A"
+                                            BorderBrush="Transparent"
+                                            Foreground="White"   
                                             Width="80"
                                             Click="BtnEliminar_Click"
                                             Cursor="Hand"

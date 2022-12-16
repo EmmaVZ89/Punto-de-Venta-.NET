@@ -40,3 +40,5 @@ C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\ob
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\Views\MiCuenta.baml
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\App.baml
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\src\Themes\Green.baml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\src\Themes\Dark.baml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\src\Themes\Red.baml

@@ -69,7 +69,7 @@
                     Grid.Row="2"
                     Width="100"
                     Cursor="Hand"
-                    Background="#40C9A2" Style="{DynamicResource BtnStyle}"
+                    Style="{DynamicResource BtnStyle}"
                     Click="BtnRegresar_Click"/>
             <!-- #ENDREGION -->
             <!-- #REGION CREAR -->
@@ -79,7 +79,6 @@
                     Grid.Column="5"
                     Width="100"
                     Cursor="Hand"
-                    Background="#2F9C95"
                     Style="{DynamicResource BtnStyle}"
                     Visibility="Hidden"
                     Click="BtnCrear_Click"/>
@@ -90,7 +89,6 @@
                     Grid.Row="20"
                     Grid.Column="5"
                     Width="100"
-                    Background="#2F9C95"
                     Cursor="Hand"
                     Style="{DynamicResource BtnStyle}"
                     Visibility="Hidden"
@@ -103,7 +101,6 @@
                     Grid.Column="5"
                     Width="100"
                     Cursor="Hand"
-                    Background="#2F9C95"
                     Style="{DynamicResource BtnStyle}"
                     Visibility="Hidden"
                     Click="BtnModificar_Click"/>
@@ -208,8 +205,8 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsHighlighted" Value="True">
-                                            <Setter Property="Background" Value="#A3F7B5"></Setter>
-                                            <Setter Property="BorderBrush" Value="#A3F7B5"></Setter>
+                                            <Setter Property="Background" Value="#888"></Setter>
+                                            <Setter Property="BorderBrush" Value="#888"></Setter>
                                         </Trigger>
                                         <Trigger Property="IsHighlighted" Value="False">
                                             <Setter Property="Foreground" Value="Black"></Setter>
@@ -232,7 +229,6 @@
                     Grid.ColumnSpan="2"
                     Width="140"
                     Content="Cambiar Imágen"
-                    Background="#40C9A2"
                     x:Name="BtnCambiarImagen"
                     Cursor="Hand"
                     Click="BtnCambiarImagen_Click"

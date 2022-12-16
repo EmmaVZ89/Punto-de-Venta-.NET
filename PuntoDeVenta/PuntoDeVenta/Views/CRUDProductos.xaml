@@ -68,7 +68,7 @@
                     Grid.Row="2"
                     Width="100"
                     Cursor="Hand"
-                    Background="#40C9A2" Style="{DynamicResource BtnStyle}"
+                    Style="{DynamicResource BtnStyle}"
                     Click="BtnRegresar_Click"/>
             <!-- #ENDREGION -->
             <!-- #REGION CREAR -->
@@ -78,7 +78,6 @@
                     Grid.Column="5"
                     Width="100"
                     Cursor="Hand"
-                    Background="#2F9C95"
                     Style="{DynamicResource BtnStyle}"
                     Visibility="Hidden"
                     Click="BtnCrear_Click"/>
@@ -89,7 +88,6 @@
                     Grid.Row="20"
                     Grid.Column="5"
                     Width="100"
-                    Background="#2F9C95"
                     Cursor="Hand"
                     Style="{DynamicResource BtnStyle}"
                     Visibility="Hidden"
@@ -102,7 +100,6 @@
                     Grid.Column="5"
                     Width="100"
                     Cursor="Hand"
-                    Background="#2F9C95"
                     Style="{DynamicResource BtnStyle}"
                     Visibility="Hidden"
                     Click="BtnModificar_Click"/>

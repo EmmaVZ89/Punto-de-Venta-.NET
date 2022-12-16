@@ -106,8 +106,6 @@
                       Grid.ColumnSpan="4"
                       x:Name="GridDatos"
                       AutoGenerateColumns="False"
-                      Background="GhostWhite"
-                      Foreground="#2F9C95"
                       FontSize="15"
                       CanUserAddRows="False"
                       CanUserResizeColumns="True"
@@ -116,7 +114,7 @@
                       RowBackground="Transparent"
                       HeadersVisibility="Column"
                       GridLinesVisibility="Horizontal"
-                      HorizontalGridLinesBrush="#2F9C95" Style="{DynamicResource DataGridStyle}">
+                      Style="{DynamicResource DataGridStyle}">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="Opciones del Administrador"
                                             Width="245">

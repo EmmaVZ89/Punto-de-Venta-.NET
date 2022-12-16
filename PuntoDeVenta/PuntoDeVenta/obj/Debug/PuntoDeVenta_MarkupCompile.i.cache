@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\App.xaml
-10-1967753816
+12680902493
 
 15-170122348
 19-89386838
-MainWindow.xaml;src\Themes\Green.xaml;Views\AcercaDe.xaml;Views\CRUDProductos.xaml;Views\CRUDUsuarios.xaml;Views\Dashboard.xaml;Views\MiCuenta.xaml;Views\POS.xaml;Views\Productos.xaml;Views\Usuarios.xaml;
+MainWindow.xaml;src\Themes\Red.xaml;src\Themes\Dark.xaml;src\Themes\Green.xaml;Views\AcercaDe.xaml;Views\CRUDProductos.xaml;Views\CRUDUsuarios.xaml;Views\Dashboard.xaml;Views\MiCuenta.xaml;Views\POS.xaml;Views\Productos.xaml;Views\Usuarios.xaml;
 
-True
+False
 
