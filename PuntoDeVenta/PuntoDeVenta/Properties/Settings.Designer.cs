@@ -34,5 +34,29 @@ namespace PuntoDeVenta.Properties {
                 this["Tema"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int IdUsuario {
+            get {
+                return ((int)(this["IdUsuario"]));
+            }
+            set {
+                this["IdUsuario"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Privilegio {
+            get {
+                return ((int)(this["Privilegio"]));
+            }
+            set {
+                this["Privilegio"] = value;
+            }
+        }
     }
 }

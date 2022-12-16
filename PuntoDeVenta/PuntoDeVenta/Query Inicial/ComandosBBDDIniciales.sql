@@ -263,3 +263,15 @@ AS BEGIN
 UPDATE Articulos SET Img=@Img
 WHERE IdArticulo=@IdArticulo
 END
+
+
+-- CREACIÓN DE PROCEDIMIENTOS ALMACENADOS PARA LOGIN
+
+CREATE PROCEDURE SP_U_Validar
+@Usuario VARCHAR(50),
+@Contra VARCHAR(500),
+@Patron VARCHAR(50)
+AS BEGIN
+SELECT IdUsuario, Privilegio FROM Usuarios
+WHERE usuario = @Usuario AND (DECRYPTBYPASSPHRASE(@Patron, Contrasenia) = @Contra)
+END

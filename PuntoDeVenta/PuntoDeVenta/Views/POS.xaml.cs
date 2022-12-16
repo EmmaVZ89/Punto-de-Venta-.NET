@@ -24,5 +24,40 @@ namespace PuntoDeVenta.Views
         {
             InitializeComponent();
         }
+
+        private void BuscarProducto(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EliminarProducto(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AgregarProducto(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CambiarCantidad(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RecibirEfectivo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AnularOrden(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CargarPago(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

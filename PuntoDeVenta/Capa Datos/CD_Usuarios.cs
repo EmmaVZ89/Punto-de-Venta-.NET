@@ -255,5 +255,31 @@ namespace Capa_Datos
             return dTable;
         }
         #endregion
+
+
+        // LOGIN
+
+        #region LOGIN
+        public CE_Usuarios Login(string usuario, string contra)
+        {
+            string patron = "PuntoDeVenta";
+            SqlDataAdapter adapterSql = new SqlDataAdapter("SP_U_Validar", this.conn.AbrirConexion());
+            adapterSql.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapterSql.SelectCommand.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
+            adapterSql.SelectCommand.Parameters.Add("@Contra", SqlDbType.VarChar).Value = contra;
+            adapterSql.SelectCommand.Parameters.Add("@Patron", SqlDbType.VarChar).Value = patron;
+            DataSet dSet = new DataSet();
+            dSet.Clear();
+            adapterSql.Fill(dSet);
+            DataTable dTable = dSet.Tables[0];
+            if(dTable.Rows.Count > 0)
+            {
+                DataRow dRow = dTable.Rows[0];
+                this.capaEntidadUsuarios.IdUsuario = Convert.ToInt32(dRow[0]);
+                this.capaEntidadUsuarios.Privilegio = Convert.ToInt32(dRow[1]);
+            }
+            return this.capaEntidadUsuarios;
+        }
+        #endregion
     }
 }

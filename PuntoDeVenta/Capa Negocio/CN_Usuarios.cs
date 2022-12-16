@@ -73,5 +73,15 @@ namespace Capa_Negocio
         }
         #endregion
 
+
+        // LOGIN
+
+        #region LOGIN
+        public CE_Usuarios Login(string usuario, string contra)
+        {
+            return this.objDatos.Login(usuario, contra);
+        }
+        #endregion
+
     }
 }

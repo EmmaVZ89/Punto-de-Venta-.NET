@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace PuntoDeVenta
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -74,7 +71,10 @@ namespace PuntoDeVenta
         private void Cerrar(object sender, RoutedEventArgs e)
         {
             //this.Close();
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+            Login lg = new Login();
+            lg.Show();
+            this.Close();
         }
 
         private void Usuarios_click(object sender, RoutedEventArgs e)
