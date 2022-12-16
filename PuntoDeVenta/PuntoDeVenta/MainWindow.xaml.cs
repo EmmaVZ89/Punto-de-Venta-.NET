@@ -1,4 +1,5 @@
-﻿using PuntoDeVenta.Views;
+﻿using PuntoDeVenta.src;
+using PuntoDeVenta.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,29 @@ namespace PuntoDeVenta
         public MainWindow()
         {
             InitializeComponent();
+
+            string tema = Properties.Settings.Default.Tema;
+
+            this.Temas.Items.Add("Green");
+            this.Temas.Items.Add("Dark");
+            this.Temas.Items.Add("Red");
+
+            if(tema != null)
+            {
+                if(tema == "Green")
+                {
+                    this.Temas.SelectedIndex = 0;
+                }
+                else if(tema == "Dark")
+                {
+                    this.Temas.SelectedIndex = 1;
+                }
+                else if(tema == "Red")
+                {
+                    this.Temas.SelectedIndex = 2;
+                }
+            }
+            this.CargarTema();
         }
 
 
@@ -178,5 +202,30 @@ namespace PuntoDeVenta
             this.Mover(sender as Border);
         }
         #endregion
+
+        private void CambiarTema(object sender, SelectionChangedEventArgs e)
+        {
+            if(this.Temas.SelectedIndex == 0)
+            {
+                Properties.Settings.Default.Tema = "Green";
+            }
+            else if(this.Temas.SelectedIndex == 1)
+            {
+                Properties.Settings.Default.Tema = "Dark";
+            }
+            else if(this.Temas.SelectedIndex == 2)
+            {
+                Properties.Settings.Default.Tema = "Red";
+            }
+            Properties.Settings.Default.Save();
+            this.CargarTema();
+        }
+
+        public void CargarTema()
+        {
+            Temas temas = new Temas();
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(temas.CargarTema());
+        }
     }
 }

@@ -22,6 +22,10 @@ namespace PuntoDeVenta.Views
         public AcercaDe()
         {
             InitializeComponent();
+
+            //string tema = Properties.Settings.Default.Tema;
+
+            //this.fondo.Source = new BitmapImage(new Uri(@"/src/img/" + tema + ".png", UriKind.Relative));
         }
 
         private void Cerrar(object sender, MouseButtonEventArgs e)
