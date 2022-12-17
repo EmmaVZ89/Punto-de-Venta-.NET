@@ -328,3 +328,10 @@ DECLARE @Precio DECIMAL(12,2) = (SELECT Precio FROM Articulos WHERE Codigo=@Codi
 INSERT INTO Ventas_Detalle VALUES(@Id_Venta, @IdArticulo, @Cantidad, @Precio, @Total);
 UPDATE Articulos SET Cantidad=Cantidad-@Cantidad WHERE Codigo=@Codigo;
 END
+
+
+SELECT * FROM Ventas;
+SELECT * FROM Ventas_Detalle;
+
+DELETE FROM Ventas;
+DELETE FROM Ventas_Detalle;

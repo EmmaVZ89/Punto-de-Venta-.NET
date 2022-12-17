@@ -85,5 +85,36 @@ namespace Capa_Datos
             return dTable;
         }
         #endregion
+
+        #region VENTA
+        public void Venta(string factura, decimal total, DateTime fecha, int idUsuario)
+        {
+            SqlCommand cmd = new SqlCommand("SP_C_Venta", this.conn.AbrirConexion());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@No_Factura", SqlDbType.VarChar).Value = factura;
+            cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = fecha;
+            cmd.Parameters.Add("@Total", SqlDbType.Decimal).Value = total;
+            cmd.Parameters.Add("@IdUsuario", SqlDbType.Int).Value = idUsuario;
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            this.conn.CerrarConexion();
+        }
+        #endregion
+
+        #region VENTA DETALLE
+        public void Venta_Detalle(string codigo, decimal cantidad, string factura, decimal totalArticulo)
+        {
+            SqlCommand cmd = new SqlCommand("SP_C_Venta_Detalle", this.conn.AbrirConexion());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = codigo;
+            cmd.Parameters.Add("@Cantidad", SqlDbType.Decimal).Value = cantidad;
+            cmd.Parameters.Add("@No_Factura", SqlDbType.VarChar).Value = factura;
+            cmd.Parameters.Add("@Total", SqlDbType.Decimal).Value = totalArticulo;
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            this.conn.CerrarConexion();
+        }
+        #endregion
+
     }
 }

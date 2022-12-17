@@ -17,6 +17,13 @@ using System.Data;
 using System.Windows.Controls.Primitives;
 using PuntoDeVenta.src.Boxes;
 using System.Globalization;
+using Microsoft.Win32;
+
+using iTextSharp.text;
+using iTextSharp.tool.xml;
+using iTextSharp.text.pdf;
+using System.IO;
+using Rectangle = iTextSharp.text.Rectangle;
 
 namespace PuntoDeVenta.Views
 {
@@ -26,6 +33,7 @@ namespace PuntoDeVenta.Views
         private decimal efectivo;
         private decimal cambio;
         private decimal total;
+        private CN_Carrito cN_Carrito;
 
         #region INICIO
         public POS()
@@ -123,6 +131,11 @@ namespace PuntoDeVenta.Views
                     this.GridProductos.Items.RemoveAt(i);
                     return ref this.can;
                 }
+                else
+                {
+                    this.can = 0;
+                    return ref this.can;
+                }
             }
             return ref this.can;
         }
@@ -216,13 +229,145 @@ namespace PuntoDeVenta.Views
         }
         #endregion
 
-        #region CARGAR PAGO
+        #region PAGAR E IMPRIMIR
         private void CargarPago(object sender, RoutedEventArgs e)
         {
+            if(this.GridProductos.Items.Count >= 1)
+            {
+                this.Venta();
+                this.efectivo = 0;
+                this.Precio();
+            }
+            else
+            {
+                MessageBox.Show("No se han agregado productos!");
+            }
+        }
 
+        private void Venta()
+        {
+            string factura = "F-" + DateTime.Now.ToString("ddMMyyyyhhmmss") + "-" + Properties.Settings.Default.IdUsuario;
+            int idUsuario = Properties.Settings.Default.IdUsuario;
+            DateTime fecha = DateTime.Now;
+            this.cN_Carrito = new CN_Carrito();
+
+            if(this.cambio >= 0)
+            {
+                this.cN_Carrito.Venta(factura, this.total, fecha, idUsuario);
+                this.Venta_detalle(factura);
+                this.GridProductos.Items.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un pago mayor o igual a la venta!");
+            }
+        }
+
+        private void Venta_detalle(string factura)
+        {
+            this.cN_Carrito = new CN_Carrito();
+            for (int i = 0; i < this.GridProductos.Items.Count; i++)
+            {
+                string codigo;
+                decimal totalArticulo;
+                decimal cantidad;
+
+                int j = 0;
+                DataGridCell cell = this.GetCelda(i, j);
+                TextBlock tb = cell.Content as TextBlock;
+                codigo = tb.Text;
+
+                int k = 3;
+                DataGridCell cell2 = this.GetCelda(i, k);
+                TextBlock tb2 = cell2.Content as TextBlock;
+                cantidad = Decimal.Parse(tb2.Text, CultureInfo.InvariantCulture);
+
+                int l = 4;
+                DataGridCell cell3 = this.GetCelda(i, l);
+                TextBlock tb3 = cell3.Content as TextBlock;
+                totalArticulo = Decimal.Parse(tb3.Text, CultureInfo.InvariantCulture);
+
+                this.cN_Carrito.Venta_Detalle(codigo, cantidad, factura, totalArticulo);
+            }
+            this.Imprimir(factura);
+        }
+
+        private void Imprimir(string factura)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog
+            {
+                FileName = factura + ".pdf"
+            };
+
+            string Pagina = Properties.Resources.Ticket.ToString();
+            Pagina = Pagina.Replace("@Ticket", factura);
+            Pagina = Pagina.Replace("@efectivo", efectivo.ToString("###,###.00"));
+            Pagina = Pagina.Replace("@cambio", cambio.ToString());
+            Pagina = Pagina.Replace("@Usuario", Properties.Settings.Default.IdUsuario.ToString());
+            Pagina = Pagina.Replace("@Fecha", DateTime.Now.ToString("dd/MM/yyyy"));
+
+            string filas = string.Empty;
+
+            for (int i = 0; i < this.GridProductos.Items.Count; i++)
+            {
+                string nombre;
+                string cantidad;
+                decimal precioUnitario;
+                decimal totalArticulo;
+
+                int j = 1;
+                DataGridCell cell1 = this.GetCelda(i, j);
+                TextBlock tb1 = cell1.Content as TextBlock;
+                nombre = tb1.Text;
+
+                int k = 3;
+                DataGridCell cell2 = this.GetCelda(i, k);
+                TextBlock tb2 = cell2.Content as TextBlock;
+                cantidad = tb2.Text;
+
+                int l = 4;
+                DataGridCell cell3 = this.GetCelda(i, l);
+                TextBlock tb3 = cell3.Content as TextBlock;
+                totalArticulo = Decimal.Parse(tb3.Text, CultureInfo.InvariantCulture);
+
+                int m = 2;
+                DataGridCell cell4 = this.GetCelda(i, m);
+                TextBlock tb4 = cell4.Content as TextBlock;
+                precioUnitario = Decimal.Parse(tb4.Text, CultureInfo.InvariantCulture);
+
+                filas += "<tr>";
+                filas += "<td align=\"center\">" + cantidad.ToString() + "</td>";
+                filas += "<td align=\"center\">" + nombre.ToString() + "</td>";
+                filas += "<td align=\"center\">" + precioUnitario.ToString() + "</td>";
+                filas += "<td align=\"center\">" + totalArticulo.ToString() + "</td>";
+                filas += "</tr>";
+            }
+            int cant = this.GridProductos.Items.Count;
+            Pagina = Pagina.Replace("@cant_articulos", cant.ToString());
+            Pagina = Pagina.Replace("@grid", filas);
+            Pagina = Pagina.Replace("@TOTAL", this.total.ToString());
+
+            if (saveFile.ShowDialog() == true)
+            {
+                using(FileStream stream = new FileStream(saveFile.FileName, FileMode.Create))
+                {
+                    int artFilas = this.GridProductos.Items.Count;
+                    Rectangle pageSize = new Rectangle(298, 420 + (artFilas * 10));
+                    Document pdfDoc = new Document(pageSize, 25, 25, 25, 25);
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+
+                    using (StringReader sr = new StringReader(Pagina))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+                MessageBox.Show("Venta realizada con exito!");
+            }
         }
         #endregion
-
 
         #region FILAS, COLUMNAS Y CELDAS
 
