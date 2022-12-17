@@ -62,9 +62,9 @@ namespace Capa_Datos
             this.productos.Nombre = Convert.ToString(dRow[1]);
             this.productos.Grupo = Convert.ToInt32(dRow[2]);
             this.productos.Codigo = Convert.ToString(dRow[3]);
-            this.productos.Precio = Convert.ToDouble(dRow[4]);
+            this.productos.Precio = Convert.ToDecimal(dRow[4]);
             this.productos.Activo = Convert.ToBoolean(dRow[5]);
-            this.productos.Cantidad = Convert.ToDouble(dRow[6]);
+            this.productos.Cantidad = Convert.ToDecimal(dRow[6]);
             this.productos.UnidadMedida = Convert.ToString(dRow[7]);
             this.productos.Img = (byte[])dRow[8];
             this.productos.Descripcion = Convert.ToString(dRow[9]);

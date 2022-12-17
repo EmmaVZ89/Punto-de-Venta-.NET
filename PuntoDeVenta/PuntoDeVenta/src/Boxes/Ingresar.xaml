@@ -1,0 +1,54 @@
+﻿<Window x:Class="PuntoDeVenta.src.Boxes.Ingresar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PuntoDeVenta.src.Boxes"
+        mc:Ignorable="d"
+        Title="Ingresar"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        FontSize="20"
+        AllowsTransparency="True"
+        Height="184" 
+        Width="266">
+    <Border CornerRadius="10"
+            Background="White"
+            Opacity="0.8">
+        <Grid Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"
+                   Content="Nueva Cantidad"
+                   HorizontalContentAlignment="Center"/>
+            <TextBox Grid.Row="2"
+                     x:Name="tbCantidad"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Style="{DynamicResource TextBoxStyle}"/>
+            <Button x:Name="BtnOk"
+                    Grid.Row="4"
+                    Style="{DynamicResource BtnStyle}"
+                    Content="OK"
+                    Width="100"
+                    HorizontalAlignment="Left"
+                    IsDefault="True"
+                    Click="OK"/>
+            <Button x:Name="BtnCancelar"
+                    Grid.Row="4"
+                    Style="{DynamicResource BtnBuscarStyle}"
+                    Content="Cancelar"
+                    Width="100"
+                    HorizontalAlignment="Right"
+                    IsDefault="True"
+                    Click="Cancelar"/>
+        </Grid>
+    </Border>
+    
+</Window>

@@ -75,13 +75,22 @@ namespace Capa_Negocio
 
 
         // LOGIN
-
         #region LOGIN
         public CE_Usuarios Login(string usuario, string contra)
         {
             return this.objDatos.Login(usuario, contra);
         }
         #endregion
+
+
+        // MI CUENTA
+        #region MI CUENTA
+        public CE_Usuarios Cargar(int idUsuario)
+        {
+            return this.objDatos.CD_Consultar(idUsuario);
+        }
+        #endregion
+
 
     }
 }

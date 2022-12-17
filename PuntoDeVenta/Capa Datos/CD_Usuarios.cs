@@ -258,7 +258,6 @@ namespace Capa_Datos
 
 
         // LOGIN
-
         #region LOGIN
         public CE_Usuarios Login(string usuario, string contra)
         {
@@ -281,5 +280,6 @@ namespace Capa_Datos
             return this.capaEntidadUsuarios;
         }
         #endregion
+
     }
 }

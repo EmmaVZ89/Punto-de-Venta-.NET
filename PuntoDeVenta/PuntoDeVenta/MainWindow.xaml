@@ -275,7 +275,9 @@
                         </ListViewItem>
                         <!-- #ENDREGION -->
                         <!-- #REGION PRODUCTOS -->
-                        <ListViewItem Height="70" Style="{DynamicResource ListViewStyle}">
+                        <ListViewItem Height="70" 
+                                      x:Name="lvProductos"
+                                      Style="{DynamicResource ListViewStyle}">
                             <Button x:Name="BtnProductos"
                                     Height="70"
                                     Width="200"
@@ -305,7 +307,9 @@
                         </ListViewItem>
                         <!-- #ENDREGION -->
                         <!-- #REGION USUARIOS -->
-                        <ListViewItem Height="70" Style="{DynamicResource ListViewStyle}">
+                        <ListViewItem Height="70"
+                                      x:Name="lvUsuarios"
+                                      Style="{DynamicResource ListViewStyle}">
                             <Button x:Name="BtnUsuarios"
                                     Height="70"
                                     Width="200"

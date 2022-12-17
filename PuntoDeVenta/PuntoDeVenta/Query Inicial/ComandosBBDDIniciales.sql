@@ -148,15 +148,16 @@ END
 
 -- ARTICULOS
 
+
 CREATE TABLE Articulos
 (
 IdArticulo INT IDENTITY(1,1),
 Nombre VARCHAR(100),
 Grupo INT,
 Codigo VARCHAR(100),
-Precio FLOAT,
+Precio DECIMAL(12,2),
 Activo BIT,
-Cantidad FLOAT,
+Cantidad DECIMAL(12,2),
 UnidadMedida VARCHAR(10),
 Img IMAGE,
 Descripcion VARCHAR(256)
@@ -274,4 +275,56 @@ CREATE PROCEDURE SP_U_Validar
 AS BEGIN
 SELECT IdUsuario, Privilegio FROM Usuarios
 WHERE usuario = @Usuario AND (DECRYPTBYPASSPHRASE(@Patron, Contrasenia) = @Contra)
+END
+
+
+-- CREACIÓN DE TABLAS PARA UTILIZAR EN PUNTOS DE VENTAS
+
+CREATE TABLE Ventas(
+Id_Venta INT IDENTITY(1,1) NOT NULL,
+No_Factura VARCHAR(20),
+Fecha_Venta DATETIME,
+Monto_Total DECIMAL(12,2),
+Id_Usuario INT
+)
+
+CREATE TABLE Ventas_Detalle(
+Id_Detalle INT IDENTITY(1,1) NOT NULL,
+Id_Venta INT,
+Id_Articulo INT,
+Cantidad DECIMAL(12,2),
+Precio_Venta DECIMAL(12,2),
+Monto_Total DECIMAL(12,2)
+)
+
+-- CREACIÓN DE PROCEDIMIENTO ALMACENADO PARA LAS VENTAS
+
+CREATE PROCEDURE SP_C_Buscar
+@buscar VARCHAR(50)
+AS BEGIN
+SELECT * FROM Articulos
+WHERE Nombre LIKE @buscar+'%'
+OR Codigo LIKE @buscar+'%' AND Activo = 1
+END
+
+CREATE PROCEDURE SP_C_Venta
+@No_Factura VARCHAR(20),
+@Fecha DATETIME,
+@Total DECIMAL(12,2),
+@IdUsuario INT
+AS BEGIN
+INSERT INTO Ventas VALUES(@No_Factura, @Fecha, @Total, @IdUsuario)
+END
+
+CREATE PROCEDURE SP_C_Venta_Detalle
+@Codigo VARCHAR(50),
+@Cantidad DECIMAL(12,2),
+@No_Factura VARCHAR(20),
+@Total DECIMAL(12,2)
+AS BEGIN
+DECLARE @Id_Venta INT = (SELECT Id_Venta FROM Ventas WHERE No_Factura=@No_Factura);
+DECLARE @IdArticulo INT = (SELECT IdArticulo FROM Articulos WHERE Codigo=@Codigo);
+DECLARE @Precio DECIMAL(12,2) = (SELECT Precio FROM Articulos WHERE Codigo=@Codigo);
+INSERT INTO Ventas_Detalle VALUES(@Id_Venta, @IdArticulo, @Cantidad, @Precio, @Total);
+UPDATE Articulos SET Cantidad=Cantidad-@Cantidad WHERE Codigo=@Codigo;
 END

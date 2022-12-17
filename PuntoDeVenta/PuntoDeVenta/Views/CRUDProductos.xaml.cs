@@ -79,8 +79,8 @@ namespace PuntoDeVenta.Views
 
                 this.objeto_CE_Productos.Nombre = this.tbNombre.Text;
                 this.objeto_CE_Productos.Codigo = this.tbCodigo.Text;
-                this.objeto_CE_Productos.Precio = Double.Parse(this.tbPrecio.Text);
-                this.objeto_CE_Productos.Cantidad = Double.Parse(this.tbCantidad.Text);
+                this.objeto_CE_Productos.Precio = Decimal.Parse(this.tbPrecio.Text);
+                this.objeto_CE_Productos.Cantidad = Decimal.Parse(this.tbCantidad.Text);
                 this.objeto_CE_Productos.Activo = (bool)this.tbActivo.IsChecked;
                 this.objeto_CE_Productos.UnidadMedida = this.tbUnidadMedida.Text;
                 this.objeto_CE_Productos.Img = this.data;
@@ -137,8 +137,8 @@ namespace PuntoDeVenta.Views
                 this.objeto_CE_Productos.IdArticulo = this.IdProducto;
                 this.objeto_CE_Productos.Nombre = this.tbNombre.Text;
                 this.objeto_CE_Productos.Codigo = this.tbCodigo.Text;
-                this.objeto_CE_Productos.Precio = Double.Parse(this.tbPrecio.Text);
-                this.objeto_CE_Productos.Cantidad = Double.Parse(this.tbCantidad.Text);
+                this.objeto_CE_Productos.Precio = Decimal.Parse(this.tbPrecio.Text);
+                this.objeto_CE_Productos.Cantidad = Decimal.Parse(this.tbCantidad.Text);
                 this.objeto_CE_Productos.Activo = (bool)this.tbActivo.IsChecked;
                 this.objeto_CE_Productos.UnidadMedida = this.tbUnidadMedida.Text;
                 this.objeto_CE_Productos.Descripcion = this.tbDescripcion.Text;

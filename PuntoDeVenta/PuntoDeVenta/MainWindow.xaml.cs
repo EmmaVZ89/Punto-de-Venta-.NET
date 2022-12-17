@@ -25,6 +25,12 @@ namespace PuntoDeVenta
 
             string tema = Properties.Settings.Default.Tema;
 
+            if(Properties.Settings.Default.Privilegio != 1)
+            {
+                this.lvProductos.Visibility = Visibility.Hidden;
+                this.lvUsuarios.Visibility = Visibility.Hidden;
+            }
+
             this.Temas.Items.Add("Green");
             this.Temas.Items.Add("Dark");
             this.Temas.Items.Add("Red");
