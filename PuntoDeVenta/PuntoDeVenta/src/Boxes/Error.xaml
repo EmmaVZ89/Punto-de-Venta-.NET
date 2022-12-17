@@ -1,0 +1,52 @@
+﻿<Window x:Class="PuntoDeVenta.src.Boxes.Error"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PuntoDeVenta.src.Boxes"
+        mc:Ignorable="d"
+        Title="Error" 
+        SizeToContent="Height"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        FontSize="20"
+        AllowsTransparency="True"
+        Height="184" 
+        Width="266">
+    <Border CornerRadius="10"
+            BorderThickness="1"
+            BorderBrush="Red"
+            Background="White"
+            Opacity="0.95">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Label Content="Información"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="2"
+                       Width="Auto"
+                       FontSize="12"
+                       TextWrapping="WrapWithOverflow"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       Name="lblError"/>
+            <Button x:Name="tbOK"
+                    Grid.Row="4"
+                    Width="100"
+                    Style="{DynamicResource BtnStyle}"
+                    Content="OK"
+                    Cursor="Hand"
+                    HorizontalAlignment="Center"
+                    Click="OK"
+                    IsDefault="True"/>
+        </Grid>
+    </Border>
+</Window>

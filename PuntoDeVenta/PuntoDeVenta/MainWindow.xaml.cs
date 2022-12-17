@@ -1,4 +1,5 @@
 ﻿using PuntoDeVenta.src;
+using PuntoDeVenta.src.Boxes;
 using PuntoDeVenta.Views;
 using System;
 using System.Collections.Generic;
@@ -19,38 +20,52 @@ namespace PuntoDeVenta
 {
     public partial class MainWindow : Window
     {
+        Error error;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            string tema = Properties.Settings.Default.Tema;
-
-            if(Properties.Settings.Default.Privilegio != 1)
+            try
             {
-                this.lvProductos.Visibility = Visibility.Hidden;
-                this.lvUsuarios.Visibility = Visibility.Hidden;
+                this.DataContext = new Dashboard();
+
+                string tema = Properties.Settings.Default.Tema;
+
+                if (Properties.Settings.Default.Privilegio != 1)
+                {
+                    this.lvProductos.Visibility = Visibility.Hidden;
+                    this.lvUsuarios.Visibility = Visibility.Hidden;
+                }
+
+                this.Temas.Items.Add("Green");
+                this.Temas.Items.Add("Dark");
+                this.Temas.Items.Add("Red");
+
+                if (tema != null)
+                {
+                    if (tema == "Green")
+                    {
+                        this.Temas.SelectedIndex = 0;
+                    }
+                    else if (tema == "Dark")
+                    {
+                        this.Temas.SelectedIndex = 1;
+                    }
+                    else if (tema == "Red")
+                    {
+                        this.Temas.SelectedIndex = 2;
+                    }
+                }
+                this.CargarTema();
+
             }
-
-            this.Temas.Items.Add("Green");
-            this.Temas.Items.Add("Dark");
-            this.Temas.Items.Add("Red");
-
-            if(tema != null)
+            catch (Exception ex)
             {
-                if(tema == "Green")
-                {
-                    this.Temas.SelectedIndex = 0;
-                }
-                else if(tema == "Dark")
-                {
-                    this.Temas.SelectedIndex = 1;
-                }
-                else if(tema == "Red")
-                {
-                    this.Temas.SelectedIndex = 2;
-                }
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
-            this.CargarTema();
         }
 
 

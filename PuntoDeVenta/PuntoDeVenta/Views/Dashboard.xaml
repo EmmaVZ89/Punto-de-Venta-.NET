@@ -3,10 +3,140 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PuntoDeVenta.Views"
+             xmlns:local="clr-namespace:PuntoDeVenta.Views" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="565" 
+             d:DesignWidth="925"
+             FontSize="15"
+             FontFamily="Segoe UI"
+             Background="Transparent">
+    <Border CornerRadius="10"
+            Background="Transparent">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!-- #REGION VENTAS -->
+            <Border Background="White"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="0,10,0,0"
+                   FontSize="20"
+                   Content="Ventas Totales"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"/>
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="0,0,0,10"
+                   FontSize="20"
+                   Content="0"
+                   Name="lblTotales"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"/>
+            <Border Grid.Column="2"
+                    Grid.Row="1"
+                    CornerRadius="0,20,20,0"
+                    Background="#77bbff">
+                <Image Source="../src/img/carrito.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="20"/>
+            </Border>
+            <!-- #ENDREGION -->
+            <!-- #REGION ARTICULOS -->
+            <Border Background="White"
+                    Grid.Row="1"
+                    Grid.Column="4"/>
+            <Label Grid.Row="1"
+                   Grid.Column="4"
+                   Margin="0,10,0,0"
+                   FontSize="20"
+                   Content="Articulos disponibles"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"/>
+            <Label Grid.Row="1"
+                   Grid.Column="4"
+                   Margin="0,0,0,10"
+                   FontSize="20"
+                   Content="0"
+                   Name="lblArtDisponibles"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"/>
+            <Border Grid.Column="5"
+                    Grid.Row="1"
+                    CornerRadius="0,20,20,0"
+                    Background="#77bbff">
+                <Image Source="../src/img/ITEM.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="20"/>
+            </Border>
+            <!-- #ENDREGION -->
+            <!-- #REGION ARTICULOS -->
+            <Border Grid.Column="1"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="5"
+                    Grid.RowSpan="3"
+                    Background="White"
+                    CornerRadius="20"/>
+            <Label Grid.Column="1"
+                   Grid.Row="2"
+                   Grid.ColumnSpan="5"
+                   FontSize="30"
+                   FontWeight="SemiBold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Top 10 Mejores Ventas"/>
+            <lvc:CartesianChart Name="Chart" 
+                                Grid.Row="3" 
+                                Grid.Column="1" 
+                                Grid.ColumnSpan="5"
+                                Grid.RowSpan="3"
+                                Margin="15">
+                <lvc:CartesianChart.Series>
+                    <lvc:LineSeries Values="{Binding Values}" 
+                                    LineSmoothness="1" 
+                                    StrokeThickness="2" 
+                                    DataLabels="True" 
+                                    FontSize="15" 
+                                    Foreground="Black"
+                                    Stroke="Black" 
+                                    Fill="#77bbff" 
+                                    PointGeometrySize="0"/>
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis IsEnabled="False" 
+                              ShowLabels="False"/>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Foreground="Black" 
+                              FontSize="14">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator StrokeThickness="1" 
+                                           Stroke="#77bbff" 
+                                           StrokeDashArray="8"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+            <!--#ENDREGION-->
+        </Grid>
+    </Border>
 </UserControl>

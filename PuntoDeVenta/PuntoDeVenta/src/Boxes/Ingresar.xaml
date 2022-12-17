@@ -15,7 +15,7 @@
         Width="266">
     <Border CornerRadius="10"
             Background="White"
-            Opacity="0.8">
+            Opacity="0.95">
         <Grid Margin="25">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

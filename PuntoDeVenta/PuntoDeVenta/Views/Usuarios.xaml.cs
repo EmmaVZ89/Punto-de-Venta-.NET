@@ -16,12 +16,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Capa_Negocio;
+using PuntoDeVenta.src.Boxes;
 
 namespace PuntoDeVenta.Views
 {
     public partial class Usuarios : UserControl
     {
         readonly CN_Usuarios objeto_CN_Usuarios = new CN_Usuarios();
+        Error error;
         //SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString);
 
         #region INICIAL
@@ -149,7 +151,16 @@ namespace PuntoDeVenta.Views
         #region BUSCADOR USUARIOS
         private void Buscar(string buscar)
         {
-            this.GridDatos.ItemsSource = this.objeto_CN_Usuarios.Buscar(buscar).DefaultView;
+            try
+            {
+                this.GridDatos.ItemsSource = this.objeto_CN_Usuarios.Buscar(buscar).DefaultView;
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }
         }
 
         private void Buscando(object sender, TextChangedEventArgs e)

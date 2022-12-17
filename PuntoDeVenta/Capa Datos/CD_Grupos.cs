@@ -35,10 +35,6 @@ namespace Capa_Datos
                     retorno.Add(Convert.ToString(dReader["Nombre"]));
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             finally
             {
                 this.conn.CerrarConexion();
@@ -82,10 +78,6 @@ namespace Capa_Datos
                 cmd.Parameters.AddWithValue("@Nombre", nombre);
                 object valor = cmd.ExecuteScalar();
                 idGrupo = (int)valor;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
             finally
             {

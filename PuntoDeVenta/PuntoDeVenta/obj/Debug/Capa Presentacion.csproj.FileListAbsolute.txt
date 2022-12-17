@@ -51,3 +51,11 @@ C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bi
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\itextsharp.xmlworker.dll
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\itextsharp.xml
 C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\PuntoDeVenta_Content.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\LiveCharts.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\LiveCharts.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\LiveCharts.xml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\src\Boxes\Error.g.cs
+C:\Users\Note\Desktop\Proyectos\Punto-de-Venta-.NET\PuntoDeVenta\PuntoDeVenta\obj\Debug\src\Boxes\Error.baml

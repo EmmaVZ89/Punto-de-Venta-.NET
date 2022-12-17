@@ -33,10 +33,6 @@ namespace Capa_Datos
                     this.carrito.Precio = Convert.ToDecimal(dRow[4]);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             finally
             {
                 this.conn.CerrarConexion();
@@ -72,10 +68,6 @@ namespace Capa_Datos
                     row["Cantidad"] = cantidad;
                     row["ProductoTotal"] = prodTotal;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
             finally
             {

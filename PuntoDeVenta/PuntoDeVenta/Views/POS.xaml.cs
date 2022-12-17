@@ -34,6 +34,7 @@ namespace PuntoDeVenta.Views
         private decimal cambio;
         private decimal total;
         private CN_Carrito cN_Carrito;
+        Error error;
 
         #region INICIO
         public POS()
@@ -46,26 +47,39 @@ namespace PuntoDeVenta.Views
         #region BUSCAR
         private void BuscarProducto(object sender, RoutedEventArgs e)
         {
-            if(this.tbBuscar.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Busqueda vacia!");
-            }
-            else
-            {
-                CN_Carrito cc = new CN_Carrito();
-                var carrito = cc.Buscar(this.tbBuscar.Text);
-
-                if(carrito.Nombre != null)
+                if (this.tbBuscar.Text == string.Empty)
                 {
-                    this.tbNombre.Text = carrito.Nombre.ToString();
-                    this.tbPrecio.Text = carrito.Precio.ToString();
-                    this.tbCantidad.Focus();
+                    this.error = new Error();
+                    this.error.lblError.Text = "Busqueda vacia!";
+                    this.error.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("No se ha encontrado el producto!");
-                    this.tbBuscar.Text = "";
+                    CN_Carrito cc = new CN_Carrito();
+                    var carrito = cc.Buscar(this.tbBuscar.Text);
+
+                    if (carrito.Nombre != null)
+                    {
+                        this.tbNombre.Text = carrito.Nombre.ToString();
+                        this.tbPrecio.Text = carrito.Precio.ToString();
+                        this.tbCantidad.Focus();
+                    }
+                    else
+                    {
+                        this.error = new Error();
+                        this.error.lblError.Text = "No se ha encontrado el producto!";
+                        this.error.ShowDialog();
+                        this.tbBuscar.Text = "";
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
         }
         #endregion
@@ -73,43 +87,72 @@ namespace PuntoDeVenta.Views
         #region ELIMINAR PRODUCTO
         private void EliminarProducto(object sender, RoutedEventArgs e)
         {
-            var seleccionado = this.GridProductos.SelectedItem;
-            if(seleccionado != null)
+            try
             {
-                this.GridProductos.Items.Remove(seleccionado);
-                if(this.GridProductos.Items.Count < 1)
+                var seleccionado = this.GridProductos.SelectedItem;
+                if (seleccionado != null)
                 {
-                    this.efectivo = 0;
+                    this.GridProductos.Items.Remove(seleccionado);
+                    if (this.GridProductos.Items.Count < 1)
+                    {
+                        this.efectivo = 0;
+                    }
                 }
+                this.Precio();
             }
-            this.Precio();
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }
         }
         #endregion
 
         #region LIMPIAR CAMPOS
         private void Limpiar()
         {
-            this.tbBuscar.Text = "";
-            this.tbNombre.Text = "";
-            this.tbCantidad.Text = "";
-            this.tbPrecio.Text = "";
-            this.Precio();
+            try
+            {
+                this.tbBuscar.Text = "";
+                this.tbNombre.Text = "";
+                this.tbCantidad.Text = "";
+                this.tbPrecio.Text = "";
+                this.Precio();
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }
         }
         #endregion
 
         #region AGREGAR
         private void AgregarProducto(object sender, RoutedEventArgs e)
         {
-            if(this.tbNombre.Text == string.Empty || this.tbCantidad.Text == string.Empty)
+            try
             {
-                MessageBox.Show("No se ha seleccionado un producto!");
+                if (this.tbNombre.Text == string.Empty || this.tbCantidad.Text == string.Empty)
+                {
+                    this.error = new Error();
+                    this.error.lblError.Text = "No se ha seleccionado un producto!";
+                    this.error.ShowDialog();
+                }
+                else
+                {
+                    string producto = this.tbNombre.Text;
+                    decimal cantidad = decimal.Parse(this.tbCantidad.Text);
+                    this.Agregar(producto, cantidad);
+                    this.Limpiar();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                string producto = this.tbNombre.Text;
-                decimal cantidad = decimal.Parse(this.tbCantidad.Text);
-                this.Agregar(producto, cantidad);
-                this.Limpiar();
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
         }
 
@@ -134,7 +177,6 @@ namespace PuntoDeVenta.Views
                 else
                 {
                     this.can = 0;
-                    return ref this.can;
                 }
             }
             return ref this.can;
@@ -162,42 +204,60 @@ namespace PuntoDeVenta.Views
         #region PRECIO
         private void Precio()
         {
-            this.total = 0;
-            for (int i = 0; i < this.GridProductos.Items.Count; i++)
+            try
             {
-                decimal precio;
-                int j = 4;
-                DataGridCell celda = this.GetCelda(i, j);
-                TextBlock tb = celda.Content as TextBlock;
-                precio = Decimal.Parse(tb.Text, CultureInfo.InvariantCulture);
-                this.total += precio;
-            }
-            this.cambio = this.efectivo - total;
+                this.total = 0;
+                for (int i = 0; i < this.GridProductos.Items.Count; i++)
+                {
+                    decimal precio;
+                    int j = 4;
+                    DataGridCell celda = this.GetCelda(i, j);
+                    TextBlock tb = celda.Content as TextBlock;
+                    precio = Decimal.Parse(tb.Text, CultureInfo.InvariantCulture);
+                    this.total += precio;
+                }
+                this.cambio = this.efectivo - total;
 
-            this.lblCambio.Content = "Cambio: $" + cambio.ToString();
-            this.lblEfectivo.Content = "Efectivo: $" + this.efectivo.ToString("###,###.00");
-            this.lblTotal.Content = "Total: $" + this.total.ToString();
+                this.lblCambio.Content = "Cambio: $" + cambio.ToString();
+                this.lblEfectivo.Content = "Efectivo: $" + this.efectivo.ToString("###,###.00");
+                this.lblTotal.Content = "Total: $" + this.total.ToString();
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }
         }
         #endregion
 
         #region CAMBIAR CANTIDAD
         private void CambiarCantidad(object sender, RoutedEventArgs e)
         {
-            var seleccionado = this.GridProductos.SelectedItem;
-            if(seleccionado != null)
+            try
             {
-                var celda = this.GridProductos.SelectedCells[0];
-                var codigo = (celda.Column.GetCellContent(celda.Item) as TextBlock).Text;
-
-                var ingresar = new Ingresar();
-                ingresar.ShowDialog();
-
-                if(ingresar.Total > 0)
+                var seleccionado = this.GridProductos.SelectedItem;
+                if (seleccionado != null)
                 {
-                    this.GridProductos.Items.Remove(seleccionado);
-                    this.Agregar(codigo, ingresar.Total);
-                    this.Precio();
+                    var celda = this.GridProductos.SelectedCells[0];
+                    var codigo = (celda.Column.GetCellContent(celda.Item) as TextBlock).Text;
+
+                    var ingresar = new Ingresar();
+                    ingresar.ShowDialog();
+
+                    if (ingresar.Total > 0)
+                    {
+                        this.GridProductos.Items.Remove(seleccionado);
+                        this.Agregar(codigo, ingresar.Total);
+                        this.Precio();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
         }
         #endregion
@@ -215,7 +275,9 @@ namespace PuntoDeVenta.Views
             } 
             else
             {
-                MessageBox.Show("Debes ingresar un numero mayor a 0");
+                this.error = new Error();
+                this.error.lblError.Text = "Debes ingresar un numero mayor a 0";
+                this.error.ShowDialog();
             }
         }
         #endregion
@@ -240,7 +302,9 @@ namespace PuntoDeVenta.Views
             }
             else
             {
-                MessageBox.Show("No se han agregado productos!");
+                this.error = new Error();
+                this.error.lblError.Text = "No se han agregado productos!";
+                this.error.ShowDialog();
             }
         }
 
@@ -259,37 +323,48 @@ namespace PuntoDeVenta.Views
             }
             else
             {
-                MessageBox.Show("Ingrese un pago mayor o igual a la venta!");
+                this.error = new Error();
+                this.error.lblError.Text = "Ingrese un pago mayor o igual a la venta!";
+                this.error.ShowDialog();
             }
         }
 
         private void Venta_detalle(string factura)
         {
-            this.cN_Carrito = new CN_Carrito();
-            for (int i = 0; i < this.GridProductos.Items.Count; i++)
+            try
             {
-                string codigo;
-                decimal totalArticulo;
-                decimal cantidad;
+                this.cN_Carrito = new CN_Carrito();
+                for (int i = 0; i < this.GridProductos.Items.Count; i++)
+                {
+                    string codigo;
+                    decimal totalArticulo;
+                    decimal cantidad;
 
-                int j = 0;
-                DataGridCell cell = this.GetCelda(i, j);
-                TextBlock tb = cell.Content as TextBlock;
-                codigo = tb.Text;
+                    int j = 0;
+                    DataGridCell cell = this.GetCelda(i, j);
+                    TextBlock tb = cell.Content as TextBlock;
+                    codigo = tb.Text;
 
-                int k = 3;
-                DataGridCell cell2 = this.GetCelda(i, k);
-                TextBlock tb2 = cell2.Content as TextBlock;
-                cantidad = Decimal.Parse(tb2.Text, CultureInfo.InvariantCulture);
+                    int k = 3;
+                    DataGridCell cell2 = this.GetCelda(i, k);
+                    TextBlock tb2 = cell2.Content as TextBlock;
+                    cantidad = Decimal.Parse(tb2.Text, CultureInfo.InvariantCulture);
 
-                int l = 4;
-                DataGridCell cell3 = this.GetCelda(i, l);
-                TextBlock tb3 = cell3.Content as TextBlock;
-                totalArticulo = Decimal.Parse(tb3.Text, CultureInfo.InvariantCulture);
+                    int l = 4;
+                    DataGridCell cell3 = this.GetCelda(i, l);
+                    TextBlock tb3 = cell3.Content as TextBlock;
+                    totalArticulo = Decimal.Parse(tb3.Text, CultureInfo.InvariantCulture);
 
-                this.cN_Carrito.Venta_Detalle(codigo, cantidad, factura, totalArticulo);
+                    this.cN_Carrito.Venta_Detalle(codigo, cantidad, factura, totalArticulo);
+                }
+                this.Imprimir(factura);
             }
-            this.Imprimir(factura);
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }   
         }
 
         private void Imprimir(string factura)

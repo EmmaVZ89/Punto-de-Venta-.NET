@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Capa_Entidad;
 using Capa_Negocio;
+using PuntoDeVenta.src.Boxes;
 
 namespace PuntoDeVenta.Views
 {
@@ -27,6 +28,7 @@ namespace PuntoDeVenta.Views
         readonly CN_Usuarios objeto_CN_Usuarios = new CN_Usuarios();
         readonly CE_Usuarios objeto_CE_Usuarios = new CE_Usuarios();
         readonly CN_Privilegios objeto_CN_Privilegios = new CN_Privilegios();
+        Error error;
 
         //readonly SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString);
         private byte[] data;
@@ -52,10 +54,19 @@ namespace PuntoDeVenta.Views
         #region CARGAR PRIVILEGIOS
         void CargarCB()
         {
-            List<string> privilegios = this.objeto_CN_Privilegios.ListarPrivilegios();
-            for (int i = 0; i < privilegios.Count; i++)
+            try
             {
-                this.cbPrivilegio.Items.Add(privilegios[i]);
+                List<string> privilegios = this.objeto_CN_Privilegios.ListarPrivilegios();
+                for (int i = 0; i < privilegios.Count; i++)
+                {
+                    this.cbPrivilegio.Items.Add(privilegios[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
             //try
             //{
@@ -100,30 +111,41 @@ namespace PuntoDeVenta.Views
         #region CREATE
         private void BtnCrear_Click(object sender, RoutedEventArgs e)
         {
-            if(this.ValidarCampos() == true && this.tbContrasenia.Text != "")
+            try
             {
-                int privilegio = this.objeto_CN_Privilegios.IdPrivilegio(this.cbPrivilegio.Text);
+                if (this.ValidarCampos() == true && this.tbContrasenia.Text != "")
+                {
+                    int privilegio = this.objeto_CN_Privilegios.IdPrivilegio(this.cbPrivilegio.Text);
 
-                this.objeto_CE_Usuarios.Nombre = this.tbNombre.Text;
-                this.objeto_CE_Usuarios.Apellido = this.tbApellido.Text;
-                this.objeto_CE_Usuarios.Dni = int.Parse(this.tbDNI.Text);
-                this.objeto_CE_Usuarios.Cuit = int.Parse(this.tbCUIT.Text);
-                this.objeto_CE_Usuarios.Correo = this.tbCorreo.Text;
-                this.objeto_CE_Usuarios.Telefono = int.Parse(this.tbTelefono.Text);
-                this.objeto_CE_Usuarios.Fecha_Nac = DateTime.Parse(this.tbFecha.Text);
-                this.objeto_CE_Usuarios.Privilegio = privilegio;
-                this.objeto_CE_Usuarios.Img = this.data;
-                this.objeto_CE_Usuarios.Usuario = this.tbUsuario.Text;
-                this.objeto_CE_Usuarios.Contrasenia = this.tbContrasenia.Text;
-                this.objeto_CE_Usuarios.Patron = this.Patron;
+                    this.objeto_CE_Usuarios.Nombre = this.tbNombre.Text;
+                    this.objeto_CE_Usuarios.Apellido = this.tbApellido.Text;
+                    this.objeto_CE_Usuarios.Dni = int.Parse(this.tbDNI.Text);
+                    this.objeto_CE_Usuarios.Cuit = int.Parse(this.tbCUIT.Text);
+                    this.objeto_CE_Usuarios.Correo = this.tbCorreo.Text;
+                    this.objeto_CE_Usuarios.Telefono = int.Parse(this.tbTelefono.Text);
+                    this.objeto_CE_Usuarios.Fecha_Nac = DateTime.Parse(this.tbFecha.Text);
+                    this.objeto_CE_Usuarios.Privilegio = privilegio;
+                    this.objeto_CE_Usuarios.Img = this.data;
+                    this.objeto_CE_Usuarios.Usuario = this.tbUsuario.Text;
+                    this.objeto_CE_Usuarios.Contrasenia = this.tbContrasenia.Text;
+                    this.objeto_CE_Usuarios.Patron = this.Patron;
 
-                this.objeto_CN_Usuarios.Insertar(this.objeto_CE_Usuarios);
+                    this.objeto_CN_Usuarios.Insertar(this.objeto_CE_Usuarios);
 
-                this.Content = new Usuarios();
+                    this.Content = new Usuarios();
+                }
+                else
+                {
+                    this.error = new Error();
+                    this.error.lblError.Text = "Los campos no pueden quedar vacíos";
+                    this.error.ShowDialog();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Los campos no pueden quedar vacíos");
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
             //try
             //{
@@ -181,24 +203,32 @@ namespace PuntoDeVenta.Views
         #region READ
         public void Consultar()
         {
-            var auxCN = this.objeto_CN_Usuarios.Consultar(this.IdUsuario);
+            try
+            {
+                var auxCN = this.objeto_CN_Usuarios.Consultar(this.IdUsuario);
 
-            this.tbNombre.Text = auxCN.Nombre.ToString();
-            this.tbApellido.Text = auxCN.Apellido.ToString();
-            this.tbDNI.Text = auxCN.Dni.ToString();
-            this.tbCUIT.Text = auxCN.Cuit.ToString();
-            this.tbCorreo.Text = auxCN.Correo.ToString();
-            this.tbTelefono.Text = auxCN.Telefono.ToString();
-            this.tbFecha.Text = auxCN.Fecha_Nac.ToString();
+                this.tbNombre.Text = auxCN.Nombre.ToString();
+                this.tbApellido.Text = auxCN.Apellido.ToString();
+                this.tbDNI.Text = auxCN.Dni.ToString();
+                this.tbCUIT.Text = auxCN.Cuit.ToString();
+                this.tbCorreo.Text = auxCN.Correo.ToString();
+                this.tbTelefono.Text = auxCN.Telefono.ToString();
+                this.tbFecha.Text = auxCN.Fecha_Nac.ToString();
 
-            var privilegio = this.objeto_CN_Privilegios.NombrePrivilegio(auxCN.Privilegio);
+                var privilegio = this.objeto_CN_Privilegios.NombrePrivilegio(auxCN.Privilegio);
 
-            this.cbPrivilegio.Text = privilegio.NombrePrivilegio;
+                this.cbPrivilegio.Text = privilegio.NombrePrivilegio;
 
-            ImageSourceConverter imgs = new ImageSourceConverter();
-            this.imagen.Source = (ImageSource)imgs.ConvertFrom(auxCN.Img);
-            this.tbUsuario.Text = auxCN.Usuario.ToString();
-
+                ImageSourceConverter imgs = new ImageSourceConverter();
+                this.imagen.Source = (ImageSource)imgs.ConvertFrom(auxCN.Img);
+                this.tbUsuario.Text = auxCN.Usuario.ToString();
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }
             //try
             //{
             //    this.conn.Open();
@@ -255,47 +285,58 @@ namespace PuntoDeVenta.Views
         #region UPDATE
         private void BtnModificar_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ValidarCampos() == true)
+            try
             {
-                int privilegio = this.objeto_CN_Privilegios.IdPrivilegio(this.cbPrivilegio.Text);
+                if (this.ValidarCampos() == true)
+                {
+                    int privilegio = this.objeto_CN_Privilegios.IdPrivilegio(this.cbPrivilegio.Text);
 
-                this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
-                this.objeto_CE_Usuarios.Nombre = this.tbNombre.Text;
-                this.objeto_CE_Usuarios.Apellido = this.tbApellido.Text;
-                this.objeto_CE_Usuarios.Dni = int.Parse(this.tbDNI.Text);
-                this.objeto_CE_Usuarios.Cuit = int.Parse(this.tbCUIT.Text);
-                this.objeto_CE_Usuarios.Correo = this.tbCorreo.Text;
-                this.objeto_CE_Usuarios.Telefono = int.Parse(this.tbTelefono.Text);
-                this.objeto_CE_Usuarios.Fecha_Nac = DateTime.Parse(this.tbFecha.Text);
-                this.objeto_CE_Usuarios.Privilegio = privilegio;
-                this.objeto_CE_Usuarios.Usuario = this.tbUsuario.Text;
+                    this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
+                    this.objeto_CE_Usuarios.Nombre = this.tbNombre.Text;
+                    this.objeto_CE_Usuarios.Apellido = this.tbApellido.Text;
+                    this.objeto_CE_Usuarios.Dni = int.Parse(this.tbDNI.Text);
+                    this.objeto_CE_Usuarios.Cuit = int.Parse(this.tbCUIT.Text);
+                    this.objeto_CE_Usuarios.Correo = this.tbCorreo.Text;
+                    this.objeto_CE_Usuarios.Telefono = int.Parse(this.tbTelefono.Text);
+                    this.objeto_CE_Usuarios.Fecha_Nac = DateTime.Parse(this.tbFecha.Text);
+                    this.objeto_CE_Usuarios.Privilegio = privilegio;
+                    this.objeto_CE_Usuarios.Usuario = this.tbUsuario.Text;
 
-                this.objeto_CN_Usuarios.ActualizarDatos(this.objeto_CE_Usuarios);
+                    this.objeto_CN_Usuarios.ActualizarDatos(this.objeto_CE_Usuarios);
 
-                this.Content = new Usuarios();
+                    this.Content = new Usuarios();
+                }
+                else
+                {
+                    this.error = new Error();
+                    this.error.lblError.Text = "Los campos no pueden quedar vacíos";
+                    this.error.ShowDialog();
+                }
+
+                if (this.tbContrasenia.Text != "")
+                {
+                    this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
+                    this.objeto_CE_Usuarios.Contrasenia = this.tbContrasenia.Text;
+                    this.objeto_CE_Usuarios.Patron = this.Patron;
+
+                    this.objeto_CN_Usuarios.ActualizarPass(this.objeto_CE_Usuarios);
+                    this.Content = new Usuarios();
+                }
+
+                if (this.imagenSubida == true)
+                {
+                    this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
+                    this.objeto_CE_Usuarios.Img = this.data;
+
+                    this.objeto_CN_Usuarios.ActualizarIMG(this.objeto_CE_Usuarios);
+                    this.Content = new Usuarios();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Los campos no pueden quedar vacíos");
-            }
-
-            if(this.tbContrasenia.Text != "")
-            {
-                this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
-                this.objeto_CE_Usuarios.Contrasenia = this.tbContrasenia.Text;
-                this.objeto_CE_Usuarios.Patron = this.Patron;
-
-                this.objeto_CN_Usuarios.ActualizarPass(this.objeto_CE_Usuarios);
-                this.Content = new Usuarios();
-            }
-
-            if(this.imagenSubida == true)
-            {
-                this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
-                this.objeto_CE_Usuarios.Img = this.data;
-
-                this.objeto_CN_Usuarios.ActualizarIMG(this.objeto_CE_Usuarios);
-                this.Content = new Usuarios();
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
             //try
             //{
@@ -362,10 +403,19 @@ namespace PuntoDeVenta.Views
         #region DELETE
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
-            this.objeto_CN_Usuarios.Eliminar(this.objeto_CE_Usuarios);
+            try
+            {
+                this.objeto_CE_Usuarios.IdUsuario = this.IdUsuario;
+                this.objeto_CN_Usuarios.Eliminar(this.objeto_CE_Usuarios);
 
-            this.Content = new Usuarios();
+                this.Content = new Usuarios();
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }
             //try
             //{
             //    this.conn.Open();
@@ -407,7 +457,9 @@ namespace PuntoDeVenta.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
         }
         #endregion  

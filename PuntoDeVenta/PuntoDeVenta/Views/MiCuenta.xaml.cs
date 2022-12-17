@@ -1,4 +1,5 @@
 ﻿using Capa_Negocio;
+using PuntoDeVenta.src.Boxes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace PuntoDeVenta.Views
 {
     public partial class MiCuenta : Window
     {
+        Error error;
+
         public MiCuenta()
         {
             InitializeComponent();
@@ -30,10 +33,11 @@ namespace PuntoDeVenta.Views
 
         private void CargarDatos()
         {
-            CN_Usuarios cn = new CN_Usuarios();
-            var a = cn.Cargar(Properties.Settings.Default.IdUsuario);
             try
             {
+                CN_Usuarios cn = new CN_Usuarios();
+                var a = cn.Cargar(Properties.Settings.Default.IdUsuario);
+
                 this.lblNombre.Text = $"Nombre: {a.Nombre}";
                 this.lblApellido.Text = $"Apellido: {a.Apellido}";
                 this.lblCorreo.Text = $"Correo: {a.Correo}";
@@ -44,7 +48,9 @@ namespace PuntoDeVenta.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
         }
 

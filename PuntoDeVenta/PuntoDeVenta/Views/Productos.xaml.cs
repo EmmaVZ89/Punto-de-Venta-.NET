@@ -13,12 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Capa_Negocio;
+using PuntoDeVenta.src.Boxes;
 
 namespace PuntoDeVenta.Views
 {
     public partial class Productos : UserControl
     {
         readonly CN_Productos obj_CN_Productos = new CN_Productos();
+        Error error;
 
         #region INICIAL
         public Productos()
@@ -31,7 +33,16 @@ namespace PuntoDeVenta.Views
         #region BUSCADOR
         public void Buscar(string buscar)
         {
-            this.GridDatos.ItemsSource = this.obj_CN_Productos.BuscarProducto(buscar).DefaultView;
+            try
+            {
+                this.GridDatos.ItemsSource = this.obj_CN_Productos.BuscarProducto(buscar).DefaultView;
+            }
+            catch (Exception ex)
+            {
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
+            }
         }
 
         private void Buscando(object sender, TextChangedEventArgs e)

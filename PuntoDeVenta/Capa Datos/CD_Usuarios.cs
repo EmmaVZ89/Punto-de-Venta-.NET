@@ -43,10 +43,6 @@ namespace Capa_Datos
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             finally
             {
                 this.conn.CerrarConexion();
@@ -96,10 +92,6 @@ namespace Capa_Datos
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             finally
             {
                 this.conn.CerrarConexion();
@@ -131,10 +123,6 @@ namespace Capa_Datos
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             finally
             {
                 this.conn.CerrarConexion();
@@ -159,10 +147,6 @@ namespace Capa_Datos
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             finally
             {
                 this.conn.CerrarConexion();
@@ -186,10 +170,6 @@ namespace Capa_Datos
                 cmd.Parameters.AddWithValue("@img", usuario.Img);
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -242,10 +222,6 @@ namespace Capa_Datos
                 dSet.Clear();
                 adapterSql.Fill(dSet);
                 dTable = dSet.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
             finally
             {

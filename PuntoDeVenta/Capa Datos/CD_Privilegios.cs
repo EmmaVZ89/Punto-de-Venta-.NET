@@ -32,10 +32,6 @@ namespace Capa_Datos
                 int idPrivilegio = (int)valor;
                 return idPrivilegio;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             finally
             {
                 this.conn.CerrarConexion();
@@ -81,10 +77,6 @@ namespace Capa_Datos
                 {
                     lista.Add(Convert.ToString(reader["NombrePrivilegio"]));
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
             finally
             {

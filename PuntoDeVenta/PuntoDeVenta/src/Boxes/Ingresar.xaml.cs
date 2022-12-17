@@ -16,6 +16,7 @@ namespace PuntoDeVenta.src.Boxes
 {
     public partial class Ingresar : Window
     {
+        Error error;
         public decimal Total { get; set; }
         public decimal Efectivo { get; set; }
 
@@ -27,17 +28,26 @@ namespace PuntoDeVenta.src.Boxes
 
         private void OK(object sender, RoutedEventArgs e)
         {
-            bool esNumerico = decimal.TryParse(this.tbCantidad.Text, out _);
+            try
+            {
+                bool esNumerico = decimal.TryParse(this.tbCantidad.Text, out _);
 
-            if (esNumerico)
-            {
-                this.Total = decimal.Parse(this.tbCantidad.Text);
-                this.Efectivo = decimal.Parse(this.tbCantidad.Text);
-                this.Close();
+                if (esNumerico)
+                {
+                    this.Total = decimal.Parse(this.tbCantidad.Text);
+                    this.Efectivo = decimal.Parse(this.tbCantidad.Text);
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.Close();
+                this.error = new Error();
+                this.error.lblError.Text = ex.Message;
+                this.error.ShowDialog();
             }
         }
 
