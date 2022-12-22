@@ -2,6 +2,7 @@
 <br>
 <p>Punto de Venta básico, CRUD de usuarios con imagenes, CRUD de productos con imágenes y generación de ventas</p>
 <p>Lenguaje de Programación: C#</p>
+<p>Patrón de Arquitectura: Programación en N Capas</p>
 <p>Interfaz de usuario: WPF(XAML)
 <p>Lenguaje de consultas: SQL Server
 <br>
@@ -10,6 +11,7 @@
 <img  width=250 src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/login.png">
 </p>
 <h2 align="center">Dashboard</h2>
+<p>En el Dashboard se mostrarán la totalidad de ventas, cantidad de productos totales y un chart donde se reflejan las últimas 10 ventas</p>
 <p align="center">
 <img  width=70% src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/dashboard.png">
 </p>
