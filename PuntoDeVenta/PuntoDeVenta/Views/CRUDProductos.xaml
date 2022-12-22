@@ -225,7 +225,7 @@
                    Grid.RowSpan="9"
                    Grid.ColumnSpan="2"
                    x:Name="imagen"
-                   Source="../src/img/user.png"/>
+                   Source="../src/img/item.png"/>
             <Button Grid.Column="4"
                     Grid.Row="14"
                     Grid.ColumnSpan="2"
