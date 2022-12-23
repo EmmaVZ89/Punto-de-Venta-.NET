@@ -1,4 +1,15 @@
-<h1 align="center">Punto de Venta</h1>
+<hr>
+<p align="center">
+<img width=100 src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/dotnet.png"/>
+<img width=100 src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/c-sharp.png"/>
+<img width=100 src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/wpf.png"/>
+<img width=100 src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/xaml.png"/>
+<img width=100 src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/sql-server.png"/>
+<img width=100 src="https://github.com/EmmaVZ89/Punto-de-Venta-.NET/blob/main/img/ncapas.png"/>
+</p>
+<hr>
+
+<h1 align="center">PUNTO DE VENTA</h1>
 <br>
 <p>Punto de Venta básico, CRUD de usuarios con imagenes, CRUD de productos con imágenes y generación de ventas</p>
 <p>Lenguaje de Programación: C#</p>
